@@ -513,6 +513,62 @@
       background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);transform:rotate(5deg)
     }
 
+    /* CASE REAL — DELUX GROUP */
+    .work.delux-case{
+      padding:0;justify-content:flex-start;
+      background:linear-gradient(155deg,#02111f,#062b4b 58%,#0a416f);
+      border:1px solid rgba(48,166,255,.2)
+    }
+    .delux-live{
+      position:relative;height:312px;margin:18px 18px 0;border-radius:18px;overflow:hidden;
+      background:#071b2b;border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 22px 46px rgba(0,0,0,.28)
+    }
+    .delux-browserbar{
+      position:absolute;z-index:4;left:0;right:0;top:0;height:36px;display:flex;align-items:center;gap:7px;
+      padding:0 12px;background:rgba(2,14,25,.96);border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .delux-browserbar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28)}
+    .delux-browserbar span{
+      margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+      font-size:9px;letter-spacing:.04em;color:#8ea7ba
+    }
+    .delux-viewport{position:absolute;left:0;right:0;top:36px;bottom:0;overflow:hidden;background:#fff}
+    .delux-viewport iframe{
+      position:absolute;left:0;top:0;width:1280px;height:800px;border:0;
+      transform:scale(.39);transform-origin:0 0;pointer-events:none;background:#fff
+    }
+    .delux-live::after{
+      content:"PREVIEW AO VIVO";position:absolute;z-index:5;right:12px;bottom:12px;padding:6px 9px;border-radius:999px;
+      background:rgba(2,16,28,.82);border:1px solid rgba(94,198,255,.35);color:#bdeaff;
+      font-size:9px;font-weight:900;letter-spacing:.12em;backdrop-filter:blur(8px)
+    }
+    .delux-copy{padding:23px 26px 27px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .delux-copy small{color:#8bcfff;opacity:1}
+    .delux-copy h3{max-width:460px;margin:0;font-size:27px}
+    .delux-copy p{margin:0;color:#a9c0d1;font-size:13px;line-height:1.5;max-width:470px}
+    .delux-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+    .delux-tags span{
+      padding:6px 8px;border-radius:8px;background:rgba(58,171,255,.08);border:1px solid rgba(58,171,255,.18);
+      color:#b8e6ff;font-size:9px;font-weight:850;letter-spacing:.05em
+    }
+    .delux-open{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;align-self:flex-start;margin-top:6px;padding:10px 13px;
+      border-radius:11px;background:linear-gradient(135deg,#1599ef,#1269bd);color:#fff;font-size:11px;font-weight:950;
+      box-shadow:0 10px 24px rgba(0,110,205,.22);transition:.24s
+    }
+    .delux-open:hover{transform:translateY(-2px);filter:brightness(1.06)}
+
+    @media(max-width:980px){
+      .delux-viewport iframe{transform:scale(.34)}
+    }
+    @media(max-width:640px){
+      .delux-live{height:250px;margin:14px 14px 0}
+      .delux-viewport iframe{transform:scale(.29)}
+      .delux-copy{padding:20px}
+      .delux-copy h3{font-size:24px}
+    }
+
     /* SOLUÇÕES / ECOSSISTEMA HS + HN */
     .packages{
       position:relative;
@@ -1000,12 +1056,43 @@
   <section class="portfolio" id="portfolio">
     <div class="container">
       <div class="section-head reveal">
-        <div class="kicker">O QUE PODEMOS CRIAR</div>
-        <h2>Criações que parecem grandes porque são pensadas como grandes.</h2>
-        <p>Aqui você pode substituir estes exemplos pelos seus trabalhos reais conforme o portfólio crescer.</p>
+        <div class="kicker">PROJETOS & DEMONSTRAÇÕES</div>
+        <h2>Veja a tecnologia e a criação aplicadas em projetos reais.</h2>
+        <p>Além dos conceitos, mostramos entregas já desenvolvidas. A vitrine abaixo traz uma demonstração ao vivo do projeto Delux Group e exemplos das outras frentes que podemos construir.</p>
       </div>
       <div class="portfolio-grid">
-        <div class="work reveal"><div class="mock"></div><small>Site + Branding</small><h3>Presença premium para empresa que quer subir de nível.</h3></div>
+        <div class="work delux-case reveal">
+          <div class="delux-live" aria-label="Demonstração ao vivo do site Delux Group">
+            <div class="delux-browserbar">
+              <i></i><i></i><i></i>
+              <span>henriquesasaki99-gif.github.io/Delux-group/</span>
+            </div>
+            <div class="delux-viewport">
+              <iframe
+                src="https://henriquesasaki99-gif.github.io/Delux-group/"
+                title="Demonstração do site Delux Group"
+                loading="lazy"
+                tabindex="-1"
+                aria-hidden="true"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="delux-copy">
+            <small>PROJETO REAL • SITE + BRANDING</small>
+            <h3>Delux Group — dois universos de marca dentro da mesma experiência digital.</h3>
+            <p>Projeto desenvolvido para apresentar Delux By e Delux Makes em uma única estrutura, com identidade própria para moda feminina e beleza.</p>
+            <div class="delux-tags">
+              <span>SITE RESPONSIVO</span>
+              <span>IDENTIDADE</span>
+              <span>DUAS MARCAS</span>
+              <span>EXPERIÊNCIA DIGITAL</span>
+            </div>
+            <a class="delux-open" href="https://henriquesasaki99-gif.github.io/Delux-group/" target="_blank" rel="noopener">
+              VER PROJETO AO VIVO ↗
+            </a>
+          </div>
+        </div>
         <div class="work reveal"><div class="mock"></div><small>Sistema Online</small><h3>Gestão simples, rápida e visual.</h3></div>
         <div class="work reveal"><div class="mock"></div><small>Automação</small><h3>Menos retrabalho, mais controle.</h3></div>
         <div class="work reveal"><div class="mock"></div><small>HN Marketing</small><h3>Criação visual que transforma ideias em comunicação.</h3></div>
