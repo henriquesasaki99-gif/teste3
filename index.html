@@ -1,1126 +1,757 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#050505">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Hadan Alves — Design Gráfico Premium</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --black:#050505;--black2:#0c0c0c;--card:#121212;--card2:#181818;
-  --white:#fff7e8;--muted:#9a927f;--muted2:#6f675a;
-  --gold:#d6a83d;--gold2:#ffd36a;--gold3:#8b6424;
-  --line:rgba(214,168,61,.24);--glow:rgba(214,168,61,.18);
-  --danger:#ff3d64;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.25;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
-}
-a{color:inherit}
-.marquee-top{
-  position:fixed;top:0;left:0;right:0;z-index:700;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
-  color:#090909;overflow:hidden;font-size:.68rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;padding:.35rem 0
-}
-.marquee-top span{display:inline-block;white-space:nowrap;animation:m1 18s linear infinite}
-@keyframes m1{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-nav{
-  position:fixed;top:1.55rem;left:0;right:0;z-index:650;display:flex;align-items:center;justify-content:space-between;
-  padding:1.05rem 4.5rem;background:rgba(5,5,5,.82);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)
-}
-.logo{font-family:Bebas Neue,sans-serif;font-size:1.65rem;letter-spacing:.16em;text-decoration:none;color:var(--gold)}
-.logo b{color:var(--white);font-weight:400}
-.navlinks{display:flex;gap:2rem;align-items:center;list-style:none}
-.navlinks a{text-decoration:none;color:var(--muted);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;transition:.25s}
-.navlinks a:hover{color:var(--gold2)}
-.nav-cta{background:var(--gold);color:#080808!important;padding:.7rem 1.15rem;font-weight:900;border-radius:999px}
-.hamb{display:none;flex-direction:column;gap:5px;cursor:pointer}.hamb span{width:24px;height:2px;background:var(--gold)}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#031525" />
+  <meta name="description" content="HS Start Digital + HN Marketing — criação de sites, sistemas, identidade visual e materiais digitais para transformar ideias em presença profissional." />
+  <title>HS Start Digital + HN Marketing</title>
+  <style>
+    :root{
+      --navy:#031525;
+      --navy-2:#06233b;
+      --blue:#0d5fb8;
+      --blue-2:#2689f1;
+      --green:#68a93f;
+      --gold:#ffb400;
+      --orange:#ff8a00;
+      --white:#ffffff;
+      --ice:#f5f8fb;
+      --text:#102033;
+      --muted:#617183;
+      --line:rgba(7,39,65,.12);
+      --shadow:0 24px 70px rgba(0,24,45,.18);
+      --radius:26px;
+    }
 
-.hero{
-  min-height:100vh;padding:9rem 4.5rem 5rem;position:relative;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:3rem;overflow:hidden
-}
-.hero:before{
-  content:"";position:absolute;inset:-20%;background:
-  radial-gradient(circle at 78% 34%,rgba(214,168,61,.22),transparent 28%),
-  radial-gradient(circle at 8% 84%,rgba(255,211,106,.10),transparent 30%),
-  linear-gradient(120deg,transparent,rgba(214,168,61,.05),transparent);
-  filter:blur(4px)
-}
-.grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.08;mask-image:linear-gradient(to bottom,black,transparent 95%)}
-.hero-content{position:relative;z-index:3;visibility:visible}
-.badge{
-  display:inline-flex;gap:.7rem;align-items:center;border:1px solid var(--line);background:rgba(214,168,61,.08);
-  padding:.65rem 1rem;border-radius:999px;color:var(--gold2);font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.5rem
-}
-.badge i{width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 22px var(--gold2)}
-h1{
-  font-family:Playfair Display,serif;font-size:clamp(3.4rem,7.2vw,7rem);line-height:.88;letter-spacing:-.06em;font-weight:900;
-  max-width:820px
-}
-h1 em{font-style:italic;font-weight:500;color:var(--gold2);text-shadow:0 0 45px rgba(255,211,106,.18)}
-.hero p{max-width:650px;margin:1.6rem 0 2.2rem;color:var(--muted);font-size:1.08rem;line-height:1.85}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;text-decoration:none;text-transform:uppercase;letter-spacing:.18em;
-  font-size:.74rem;font-weight:900;padding:1rem 1.6rem;border-radius:999px;transition:.25s;border:1px solid transparent
-}
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#050505;box-shadow:0 18px 60px rgba(214,168,61,.18)}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 80px rgba(214,168,61,.28)}
-.btn-ghost{border-color:var(--line);color:var(--gold2);background:rgba(255,255,255,.02)}
-.btn-ghost:hover{background:rgba(214,168,61,.08)}
-.hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:3rem;max-width:720px}
-.metric{background:rgba(5,5,5,.92);padding:1.5rem}
-.metric strong{display:block;font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:2.7rem;line-height:1}
-.metric span{font-size:.7rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
-.hero-visual{position:relative;z-index:3;min-height:560px;display:flex;align-items:center;justify-content:center}
-.orbit{width:min(36vw,430px);height:min(36vw,430px);border:1px solid var(--line);border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;animation:spin 18s linear infinite}
-.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(214,168,61,.16);border-radius:50%}.orbit:before{inset:42px}.orbit:after{inset:88px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.monogram{animation:spinBack 18s linear infinite;text-align:center}
-@keyframes spinBack{to{transform:rotate(-360deg)}}
-.diamond{width:185px;height:185px;border:2px solid var(--gold);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 0 80px rgba(214,168,61,.17)}
-.diamond span{transform:rotate(-45deg);font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:5.5rem}
-.float{
-  position:absolute;background:rgba(18,18,18,.92);border:1px solid var(--line);padding:1rem 1.15rem;border-radius:18px;box-shadow:0 20px 80px rgba(0,0,0,.4);animation:float 4s ease-in-out infinite
-}
-.float small{display:block;color:var(--gold2);letter-spacing:.18em;text-transform:uppercase;font-size:.58rem;font-weight:900}.float b{font-family:Bebas Neue,sans-serif;font-size:1.7rem}.float p{font-size:.72rem;color:var(--muted);margin:.1rem 0 0}
-.f1{top:6%;left:3%}.f2{right:0;top:33%;animation-delay:1s}.f3{left:9%;bottom:6%;animation-delay:2s}
-@keyframes float{50%{transform:translateY(-12px)}}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--ice);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    .container{width:min(1180px, calc(100% - 38px)); margin-inline:auto}
 
-.ticker{background:var(--card2);border-block:1px solid var(--line);overflow:hidden;padding:1rem 0}
-.ticker div{display:flex;gap:3.5rem;width:max-content;animation:m2 26s linear infinite}
-.ticker span{font-family:Bebas Neue,sans-serif;color:var(--muted);font-size:1rem;letter-spacing:.28em;white-space:nowrap}
-.ticker b{color:var(--gold2)}
-@keyframes m2{to{transform:translateX(-50%)}}
+    /* NAV */
+    .topbar{
+      position:fixed; inset:0 0 auto 0; z-index:50;
+      background:rgba(3,21,37,.78);
+      backdrop-filter: blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+    }
+    .brand{display:flex; align-items:center; gap:14px; min-width:max-content}
+    .brand-logo{
+      width:58px;height:58px;object-fit:contain;border-radius:50%;
+      background:#fff;padding:4px;box-shadow:0 10px 30px rgba(0,0,0,.18)
+    }
+    .brand-text strong{display:block;color:#fff;font-size:14px;letter-spacing:.11em}
+    .brand-text small{color:#9eb4c7; letter-spacing:.14em; font-size:10px}
+    .brand-x{color:var(--gold);font-weight:900}
+    .menu{display:flex;align-items:center;gap:24px;color:#d7e2ea;font-size:14px;font-weight:700}
+    .menu a{position:relative;transition:.25s}
+    .menu a:hover{color:#fff}
+    .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:2px;background:var(--gold);transition:.25s}
+    .menu a:hover::after{right:0}
+    .nav-cta{
+      padding:12px 17px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--orange));
+      color:var(--navy);font-weight:900;box-shadow:0 10px 30px rgba(255,180,0,.25)
+    }
+    .hamb{display:none;background:none;border:0;color:#fff;font-size:28px}
 
-section{padding:7rem 4.5rem;position:relative}
-.eyebrow{color:var(--gold2);font-size:.68rem;font-weight:900;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1rem}
-.title{font-family:Playfair Display,serif;font-size:clamp(2.3rem,4vw,4.2rem);line-height:1.02;letter-spacing:-.04em}
-.title em{color:var(--gold2);font-style:italic;font-weight:500}
-.lead{color:var(--muted);font-size:1rem;line-height:1.8;max-width:720px;margin-top:1rem}
-.services{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);margin-top:3.5rem}
-.card{background:var(--black);padding:2.4rem 1.5rem;position:relative;overflow:hidden;min-height:260px;transition:.3s}
-.card:before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(214,168,61,.12),transparent 55%);opacity:0;transition:.3s}
-.card:hover{transform:translateY(-6px);background:var(--card)}.card:hover:before{opacity:1}
-.icon{width:52px;height:52px;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold2);font-size:1.4rem;margin-bottom:1.3rem;border-radius:16px}
-.card h3{font-family:Playfair Display,serif;font-size:1.22rem;margin-bottom:.75rem;position:relative}
-.card p{color:var(--muted);font-size:.82rem;line-height:1.7;position:relative}
-.price{font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:2.1rem;margin-top:1.2rem;position:relative}.price small{font-family:Inter;font-size:.65rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:780px;
+      padding:150px 0 96px;
+      color:#fff;
+      background:
+        radial-gradient(circle at 80% 22%, rgba(18,111,212,.35), transparent 30%),
+        radial-gradient(circle at 15% 70%, rgba(104,169,63,.12), transparent 28%),
+        linear-gradient(145deg,#020d18 0%,#031525 43%,#06233b 100%);
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size:52px 52px;
+      mask-image:linear-gradient(to bottom,black,transparent 88%);
+    }
+    .orb{position:absolute;border-radius:50%;border:1px solid rgba(66,163,255,.35);animation:spin 16s linear infinite}
+    .orb.one{width:600px;height:600px;right:-200px;top:90px}
+    .orb.two{width:420px;height:420px;right:-95px;top:180px;animation-direction:reverse}
+    .orb::after{content:"";width:9px;height:9px;background:var(--gold);border-radius:50%;position:absolute;top:48%;left:-5px;box-shadow:0 0 24px var(--gold)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+      color:#b9d8f3;font-weight:800;font-size:12px;letter-spacing:.15em;text-transform:uppercase
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px var(--gold)}
+    h1{
+      margin:22px 0 22px;
+      font-size:clamp(48px,6vw,86px);
+      line-height:.94;
+      letter-spacing:-.055em;
+      max-width:760px
+    }
+    h1 .blue{color:#5eb0ff}
+    h1 .gold{color:var(--gold)}
+    .hero-lead{max-width:650px;font-size:19px;line-height:1.62;color:#c7d5e0;margin:0 0 30px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:52px;padding:0 22px;border-radius:14px;border:1px solid transparent;
+      font-weight:900;transition:.25s;cursor:pointer
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--gold),var(--orange));color:var(--navy);box-shadow:0 15px 36px rgba(255,164,0,.2)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(255,164,0,.28)}
+    .btn-ghost{border-color:rgba(255,255,255,.2);color:#fff;background:rgba(255,255,255,.04)}
+    .btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+    .trust{display:flex;gap:24px;flex-wrap:wrap;margin-top:32px;color:#aec1cf;font-size:13px}
+    .trust span{display:flex;align-items:center;gap:8px}
+    .check{width:21px;height:21px;border-radius:50%;display:grid;place-items:center;background:rgba(104,169,63,.16);color:#9bd26e;font-weight:900}
 
-.dark{background:var(--black2)}
-.kits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.5rem}
-.kit{background:linear-gradient(160deg,rgba(214,168,61,.08),rgba(18,18,18,.9) 45%);border:1px solid var(--line);padding:2.7rem;border-radius:28px;position:relative;overflow:hidden}
-.kit.popular{border-color:var(--gold);box-shadow:0 0 80px rgba(214,168,61,.08);transform:translateY(-10px)}
-.tag{position:absolute;right:1.4rem;top:1.4rem;background:var(--gold);color:#050505;border-radius:999px;padding:.42rem .8rem;font-size:.58rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
-.kit h3{font-family:Playfair Display,serif;font-size:1.55rem;margin-bottom:.7rem}.kit p{color:var(--muted);line-height:1.8;font-size:.9rem}.kit .big{font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:4rem;margin:1.4rem 0 .5rem}
-.kit ul{list-style:none;display:grid;gap:.7rem;margin:1.2rem 0}.kit li{color:var(--muted);font-size:.85rem}.kit li:before{content:"✦ ";color:var(--gold2)}
+    .hero-visual{position:relative;min-height:520px}
+    .screen{
+      position:absolute;left:15px;right:0;top:0;height:392px;border-radius:24px;
+      background:linear-gradient(145deg,#0a2a46,#031522);
+      border:1px solid rgba(255,255,255,.14);box-shadow:0 36px 80px rgba(0,0,0,.4);
+      transform:perspective(1200px) rotateY(-8deg) rotateX(2deg);overflow:hidden
+    }
+    .browserbar{height:46px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .browserbar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.28)}
+    .browser-url{margin-left:10px;height:24px;flex:1;max-width:230px;border-radius:7px;background:rgba(255,255,255,.06)}
+    .screen-inner{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:30px}
+    .mini-copy h3{font-size:30px;line-height:1.05;margin:4px 0 14px}
+    .mini-copy p{font-size:13px;line-height:1.5;color:#b7c8d6}
+    .mini-copy .mini-btn{display:inline-block;margin-top:8px;padding:9px 12px;border-radius:9px;background:var(--gold);color:var(--navy);font-size:10px;font-weight:900}
+    .dash{
+      border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;background:rgba(255,255,255,.04)
+    }
+    .bars{height:150px;display:flex;align-items:flex-end;gap:9px;padding-top:16px}
+    .bars i{width:16%;border-radius:8px 8px 2px 2px;background:linear-gradient(to top,#0f4e8e,#61b6ff);animation:pulse 2.4s ease-in-out infinite alternate}
+    .bars i:nth-child(1){height:30%}.bars i:nth-child(2){height:46%}.bars i:nth-child(3){height:39%}.bars i:nth-child(4){height:70%}.bars i:nth-child(5){height:58%}.bars i:nth-child(6){height:88%}
+    @keyframes pulse{to{filter:brightness(1.25);transform:translateY(-4px)}}
+    .phone{
+      position:absolute;right:-15px;bottom:14px;width:185px;height:365px;border-radius:34px;
+      border:8px solid #07121c;background:#061d31;box-shadow:0 32px 70px rgba(0,0,0,.42);padding:30px 16px 16px;
+      transform:rotate(4deg)
+    }
+    .phone::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:62px;height:14px;border-radius:10px;background:#02080d}
+    .phone small{color:#7fb9ed;font-weight:800}
+    .phone h4{font-size:24px;margin:22px 0 9px;line-height:1.04}
+    .phone p{font-size:12px;color:#b8c8d2;line-height:1.45}
+    .phone-chart{margin-top:22px;height:120px;border-left:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);position:relative}
+    .line-chart{position:absolute;inset:10px;background:linear-gradient(165deg,transparent 44%,var(--gold) 45% 47%,transparent 48%)}
+    .float-card{
+      position:absolute;left:-18px;bottom:5px;width:245px;padding:18px;border-radius:18px;
+      background:rgba(255,255,255,.93);color:var(--text);box-shadow:var(--shadow)
+    }
+    .float-card b{display:block;font-size:13px;color:var(--blue)}
+    .float-card strong{display:block;font-size:28px;margin:3px 0}
+    .float-card span{font-size:12px;color:var(--muted)}
 
-.showcase{display:grid;grid-template-columns:1.2fr .8fr;gap:1px;background:var(--line);margin-top:3.5rem}
-.panel{background:var(--black);padding:3rem;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
-.panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 30%,rgba(214,168,61,.16),transparent 40%)}
-.panel h3{font-family:Playfair Display,serif;font-size:2.2rem;position:relative}.panel p{color:var(--muted);line-height:1.8;margin-top:1rem;position:relative}
-.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
-.mock{background:var(--card);min-height:210px;display:grid;place-items:center;color:var(--muted);font-family:Bebas Neue,sans-serif;letter-spacing:.2em;position:relative;overflow:hidden}
-.mock:before{content:"";position:absolute;inset:20px;border:1px dashed rgba(214,168,61,.25);border-radius:22px}
-.mock b{color:var(--gold2);font-size:2rem}
+    /* GENERIC */
+    section{padding:96px 0}
+    .section-head{max-width:760px;margin-bottom:42px}
+    .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.18em;font-weight:900;color:var(--blue)}
+    h2{font-size:clamp(34px,4vw,58px);line-height:1.03;letter-spacing:-.045em;margin:12px 0 16px}
+    .section-head p{font-size:18px;line-height:1.6;color:var(--muted);margin:0}
+    .pill{display:inline-block;background:#eaf4ff;color:var(--blue);font-weight:900;border-radius:999px;padding:7px 11px;font-size:11px}
 
-.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.5rem}
-.step{border:1px solid var(--line);border-radius:24px;padding:2rem;background:rgba(255,255,255,.02)}
-.step b{font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:2.6rem}.step h3{font-family:Playfair Display,serif;margin:.7rem 0}.step p{color:var(--muted);font-size:.86rem;line-height:1.7}
+    /* BRAND STRIP */
+    .brand-strip{padding:0;margin-top:-34px;position:relative;z-index:5}
+    .strip{
+      background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:24px 28px;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:18px;border:1px solid #edf1f5
+    }
+    .strip-item{display:flex;align-items:center;gap:14px;padding:7px 10px}
+    .strip-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#edf6ff;color:var(--blue);font-size:22px;font-weight:900}
+    .strip-item:nth-child(2) .strip-icon{background:#eef8e9;color:var(--green)}
+    .strip-item:nth-child(3) .strip-icon{background:#fff5da;color:#bd7900}
+    .strip-item:nth-child(4) .strip-icon{background:#eaf3fb;color:#082e52}
+    .strip-item strong{display:block;font-size:14px}.strip-item small{color:var(--muted)}
 
-.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem}
-.quote{background:var(--card);border:1px solid var(--line);padding:2rem;border-radius:24px}.quote p{color:var(--muted);line-height:1.75}.quote b{display:block;margin-top:1.3rem;color:var(--gold2)}
+    /* SERVICES */
+    .services{background:#fff}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{
+      position:relative;padding:28px;border:1px solid var(--line);border-radius:var(--radius);
+      background:linear-gradient(180deg,#fff,#fbfdff);overflow:hidden;transition:.3s
+    }
+    .card::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-55px;top:-55px;background:rgba(13,95,184,.06)}
+    .card:hover{transform:translateY(-8px);box-shadow:0 22px 55px rgba(0,30,55,.12)}
+    .card .icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:27px;font-weight:900;margin-bottom:22px;background:#eaf4ff;color:var(--blue)}
+    .card.green .icon{background:#edf8e8;color:var(--green)}
+    .card.gold .icon{background:#fff4d6;color:#bf7e00}
+    .card h3{font-size:23px;margin:0 0 10px}
+    .card p{color:var(--muted);line-height:1.55;margin:0 0 18px}
+    .card ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    .card li{display:flex;gap:9px;font-size:14px}
+    .card li::before{content:"✓";font-weight:900;color:var(--blue)}
+    .card.green li::before{color:var(--green)}.card.gold li::before{color:#d99000}
 
-.final{
-  text-align:center;background:
-  radial-gradient(circle at 50% 10%,rgba(214,168,61,.22),transparent 34%),
-  linear-gradient(180deg,var(--black2),var(--black));
-}
-.final .title{max-width:900px;margin:auto}.final .lead{margin:1.2rem auto 2.2rem}
-.form{
-  max-width:760px;margin:3rem auto 0;display:grid;gap:1rem;background:rgba(18,18,18,.72);border:1px solid var(--line);padding:1.4rem;border-radius:28px
-}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-input,select,textarea{width:100%;background:#080808;border:1px solid var(--line);border-radius:16px;padding:1rem;color:var(--white);font-family:Inter;outline:none}
-textarea{min-height:110px;resize:none}input:focus,select:focus,textarea:focus{border-color:var(--gold)}
-.wa-fixed{position:fixed;right:1.6rem;bottom:1.6rem;z-index:800;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;text-decoration:none;box-shadow:0 12px 40px rgba(37,211,102,.38);font-size:1.7rem;animation:pulse 1.8s infinite}
-@keyframes pulse{50%{transform:scale(1.08)}}
-footer{padding:2.4rem 4.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.8rem}.footlogo{font-family:Bebas Neue;color:var(--gold2);font-size:1.4rem;letter-spacing:.18em}
+    /* HS x HN */
+    .fusion{background:linear-gradient(135deg,#eef7ff 0%,#fff 46%,#fff7e7 100%)}
+    .fusion-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .brand-panel{
+      border-radius:30px;padding:38px;min-height:360px;position:relative;overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,27,50,.10)
+    }
+    .brand-panel.hs{background:linear-gradient(145deg,#031525,#0a3760);color:#fff}
+    .brand-panel.hn{background:linear-gradient(145deg,#fff,#fff4dd);border:1px solid #f3dfb4}
+    .brand-panel .bigmark{font-size:84px;font-weight:950;letter-spacing:-.09em;line-height:.9}
+    .brand-panel.hs .bigmark{color:#65b6ff}
+    .brand-panel.hn .bigmark{color:var(--orange)}
+    .brand-panel h3{font-size:28px;margin:20px 0 10px}
+    .brand-panel p{line-height:1.6;max-width:460px;opacity:.8}
+    .brand-panel .tagline{font-weight:900;margin-top:28px;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+    .brand-panel::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-80px;bottom:-90px;border:26px solid rgba(255,255,255,.06)}
+    .hn::after{border-color:rgba(255,138,0,.08)}
+    .fusion-arrow{
+      text-align:center;font-size:16px;font-weight:900;color:var(--navy);margin-top:24px
+    }
+    .fusion-arrow span{color:var(--orange)}
 
-.reveal{opacity:1;transform:none;transition:.7s}.reveal.on{opacity:1;transform:none}
-@media(max-width:1050px){
-  nav{padding:1rem 1.4rem}.navlinks{display:none}.hamb{display:flex}.navlinks.open{display:flex;position:fixed;top:5.2rem;left:1rem;right:1rem;flex-direction:column;background:#080808;border:1px solid var(--line);padding:1.5rem;border-radius:22px}
-  .hero{grid-template-columns:1fr;padding:8rem 1.4rem 4rem}.hero-visual{min-height:330px}.orbit{width:290px;height:290px}.float{display:none}
-  section{padding:4.6rem 1.4rem}.services{grid-template-columns:1fr 1fr}.kits,.testimonials{grid-template-columns:1fr}.kit.popular{transform:none}.showcase{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.hero-metrics{grid-template-columns:1fr 1fr}
-  footer{padding:2rem 1.4rem}.form-row{grid-template-columns:1fr}
-}
-@media(max-width:620px){.services,.process,.hero-metrics{grid-template-columns:1fr}h1{font-size:3.45rem}.diamond{width:145px;height:145px}.diamond span{font-size:4.4rem}.mock-grid{grid-template-columns:1fr}}
+    /* PROCESS */
+    .process{background:var(--navy);color:#fff}
+    .process .kicker{color:#7fc0ff}.process .section-head p{color:#aec1cf}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .step{padding:26px;border-radius:22px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+    .step-num{font-size:12px;font-weight:900;color:var(--gold);letter-spacing:.16em}
+    .step h3{font-size:22px;margin:16px 0 10px}.step p{color:#b7c8d5;line-height:1.55;font-size:14px}
 
-/* ===== ADM EDITÁVEL ===== */
-.admin-open{
-  position:fixed;left:1.4rem;bottom:1.6rem;z-index:900;
-  background:linear-gradient(135deg,var(--gold),var(--gold2));color:#050505;
-  border:0;border-radius:999px;padding:.85rem 1.1rem;font-weight:900;
-  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 40px rgba(214,168,61,.25)
-}
-.admin-panel{
-  position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.78);
-  display:none;align-items:center;justify-content:center;padding:1rem
-}
-.admin-panel.open{display:flex}
-.admin-box{
-  width:min(920px,96vw);max-height:92vh;overflow:auto;background:#080808;
-  border:1px solid var(--line);border-radius:26px;padding:1.4rem;color:var(--white);
-  box-shadow:0 30px 120px rgba(0,0,0,.7)
-}
-.admin-box h2{font-family:Playfair Display,serif;margin-bottom:.4rem}
-.admin-box p{color:var(--muted);line-height:1.6;font-size:.9rem;margin-bottom:1rem}
-.admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
-.admin-field{display:grid;gap:.45rem}
-.admin-field label{font-size:.65rem;color:var(--gold2);letter-spacing:.16em;text-transform:uppercase;font-weight:900}
-.admin-field input,.admin-field textarea{
-  background:#050505;border:1px solid var(--line);border-radius:14px;color:var(--white);
-  padding:.9rem;font-family:Inter;width:100%
-}
-.admin-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem}
-.admin-btn{
-  border:1px solid var(--line);background:rgba(214,168,61,.08);color:var(--gold2);
-  border-radius:999px;padding:.8rem 1rem;font-weight:900;text-transform:uppercase;
-  letter-spacing:.12em;cursor:pointer;font-size:.72rem
-}
-.admin-btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#050505}
-.admin-btn.red{border-color:rgba(255,61,100,.5);color:#ff8aa0;background:rgba(255,61,100,.08)}
-.admin-close{float:right;background:transparent;border:1px solid var(--line);color:var(--gold2);border-radius:50%;width:38px;height:38px;cursor:pointer}
-body.admin-mode [data-adm-edit]{
-  outline:1px dashed rgba(255,211,106,.55);outline-offset:4px;cursor:text
-}
-body.admin-mode [data-adm-edit]:hover{
-  background:rgba(214,168,61,.08)
-}
-.admin-tip{
-  position:fixed;left:50%;transform:translateX(-50%);bottom:1.5rem;z-index:1300;
-  background:#080808;border:1px solid var(--gold);color:var(--gold2);
-  border-radius:999px;padding:.7rem 1rem;font-size:.75rem;letter-spacing:.08em;display:none
-}
-body.admin-mode .admin-tip{display:block}
-.hero-admin-img{
-  width:min(38vw,520px);max-width:100%;display:none;object-fit:contain;
-  filter:drop-shadow(0 0 42px rgba(214,168,61,.32));animation:float 4s ease-in-out infinite
-}
-.hero-visual.has-admin-img .orbit{display:none}
-.hero-visual.has-admin-img .hero-admin-img{display:block}
+    /* PORTFOLIO */
+    .portfolio{background:#fff}
+    .portfolio-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-template-rows:260px 260px;gap:18px}
+    .work{
+      border-radius:24px;overflow:hidden;position:relative;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;
+      background:#071a2b;color:#fff;box-shadow:0 16px 40px rgba(0,25,46,.12)
+    }
+    .work:first-child{grid-row:1/3;background:
+      radial-gradient(circle at 70% 20%,rgba(35,132,230,.7),transparent 25%),
+      linear-gradient(145deg,#031525,#0a2a46)}
+    .work:nth-child(2){background:linear-gradient(145deg,#0b4b7e,#0c6fbc)}
+    .work:nth-child(3){background:linear-gradient(145deg,#7ba93e,#437326)}
+    .work:nth-child(4){grid-column:2/4;background:linear-gradient(120deg,#ffb000,#ff7a00)}
+    .work small{font-weight:800;opacity:.72;letter-spacing:.12em;text-transform:uppercase}
+    .work h3{font-size:28px;margin:8px 0 0;max-width:380px}
+    .work .mock{
+      position:absolute;right:-24px;top:26px;width:55%;height:55%;border-radius:18px;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);transform:rotate(5deg)
+    }
 
-/* ===== HERO CARROSSEL ADM ===== */
-.hero-carousel{
-  width:min(38vw,520px);max-width:100%;display:none;position:relative;
-  align-items:center;justify-content:center;overflow:hidden;border-radius:28px;
-}
-.hero-carousel img{
-  width:100%;max-height:560px;object-fit:contain;display:none;
-  filter:drop-shadow(0 0 42px rgba(214,168,61,.32));animation:float 4s ease-in-out infinite;
-}
-.hero-carousel img.active{display:block}
-.hero-visual.has-admin-img .hero-carousel{display:flex}
-.hero-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:0;background:transparent;
-  color:var(--gold2);font-size:3.4rem;line-height:1;cursor:pointer;text-shadow:0 4px 18px #000;
-  width:54px;height:74px;display:grid;place-items:center;touch-action:manipulation;
-}
-.hero-arrow.prev{left:.2rem}.hero-arrow.next{right:.2rem}
-.hero-dots{position:absolute;left:0;right:0;bottom:.6rem;display:flex;justify-content:center;gap:.4rem;z-index:6}
-.hero-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--gold2);background:rgba(0,0,0,.35)}
-.hero-dot.active{background:var(--gold2)}
-@media(max-width:780px){.hero-carousel{width:min(86vw,390px)}.hero-carousel img{max-height:330px}.hero-arrow{font-size:3.9rem;width:64px;height:88px}}
+    /* PRICING / PACKAGES */
+    .packages{background:#f6f9fc}
+    .package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .package{
+      padding:30px;border-radius:26px;background:#fff;border:1px solid var(--line);position:relative
+    }
+    .package.featured{border:2px solid var(--blue);box-shadow:0 24px 70px rgba(13,95,184,.14);transform:translateY(-8px)}
+    .badge{position:absolute;top:18px;right:18px;padding:7px 10px;border-radius:999px;background:var(--blue);color:#fff;font-size:10px;font-weight:900}
+    .package h3{font-size:25px;margin:8px 0}
+    .package p{color:var(--muted);line-height:1.5}
+    .package ul{list-style:none;padding:0;margin:22px 0;display:grid;gap:11px}
+    .package li{font-size:14px;display:flex;gap:9px}.package li::before{content:"✓";color:var(--green);font-weight:900}
 
-@media(max-width:780px){.admin-grid{grid-template-columns:1fr}.admin-open{left:1rem;bottom:5.2rem}}
+    /* CTA */
+    .cta{
+      position:relative;overflow:hidden;background:linear-gradient(135deg,#031525,#0b3b66);color:#fff
+    }
+    .cta::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 120deg,transparent,rgba(38,137,241,.16),transparent,rgba(255,180,0,.12),transparent);animation:spin 25s linear infinite}
+    .cta-box{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+    .cta h2{margin-top:0}.cta p{color:#bfd0dc;font-size:18px;line-height:1.6}
+    .contact-box{background:#fff;color:var(--text);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
+    .contact-box label{display:block;font-size:12px;font-weight:900;margin:14px 0 7px;color:#4c5c6d}
+    .contact-box input,.contact-box textarea{
+      width:100%;border:1px solid #dfe7ee;border-radius:12px;padding:13px 14px;outline:none;background:#fbfdff
+    }
+    .contact-box textarea{min-height:110px;resize:vertical}
+    .contact-box input:focus,.contact-box textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(13,95,184,.09)}
+    .contact-box button{width:100%;margin-top:14px}
 
+    .contact-showcase{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px
+    }
+    .contact-option{
+      padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);backdrop-filter:blur(8px)
+    }
+    .contact-option strong{display:block;color:#fff;font-size:16px;margin-bottom:6px}
+    .contact-option .contact-number{font-size:19px;font-weight:950;color:#fff;letter-spacing:-.02em}
+    .contact-option small{display:block;color:#a9bfd0;margin:5px 0 14px;line-height:1.4}
+    .contact-option a{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 13px;border-radius:11px;background:#24d366;color:#fff;
+      font-weight:900;font-size:12px;transition:.2s
+    }
+    .contact-option a:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .contact-option.hn-contact{border-color:rgba(255,180,0,.25)}
+    .contact-option.hn-contact strong{color:#ffd36a}
 
+    .contact-destination{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px
+    }
+    .contact-destination .btn{width:100%;margin-top:0}
+    .btn-hn{background:linear-gradient(135deg,#ffbd24,#ff8a00);color:var(--navy)}
+    .contact-note{
+      font-size:12px;color:#72808e;margin:12px 0 0;text-align:center;line-height:1.5
+    }
 
-/* ===== MOBILE PREMIUM UPDATE ===== */
-html,body{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
-button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
-.btn,.admin-btn,.admin-open,.wa-fixed,.hamb{min-height:48px;touch-action:manipulation}
-input,select,textarea{font-size:16px;appearance:none;-webkit-appearance:none}
-img{max-width:100%;height:auto}
-.hamb{width:48px;height:48px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:14px;background:rgba(214,168,61,.06)}
-.hamb span{transition:.25s}.hamb.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamb.active span:nth-child(2){opacity:0}.hamb.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.navlinks.open a{width:100%;text-align:center;padding:.85rem 1rem;border-radius:14px;background:rgba(214,168,61,.05)}
-.hero{width:100%}.hero-actions .btn{width:auto}.card,.kit,.panel,.step,.quote{word-break:normal;overflow-wrap:anywhere}
-.admin-box{-webkit-overflow-scrolling:touch}.admin-close{position:sticky;top:0;z-index:3;background:#080808}
-@media(max-width:1050px){
-  nav{top:1.5rem;padding:.85rem 1rem}.logo{font-size:1.35rem}.navlinks.open{top:4.95rem;max-height:calc(100vh - 6rem);overflow:auto;box-shadow:0 24px 90px rgba(0,0,0,.65)}
-  .hero{padding:7.4rem 1.05rem 3.2rem;gap:1.5rem}.hero p{font-size:.98rem;line-height:1.7}.hero-actions{display:grid;grid-template-columns:1fr;gap:.8rem}.hero-actions .btn{width:100%}.hero-metrics{margin-top:2rem}.metric{padding:1.15rem}.metric strong{font-size:2.25rem}
-  .hero-visual{min-height:260px}.orbit{width:min(72vw,290px);height:min(72vw,290px)}.hero-admin-img{width:min(84vw,380px)}
-  section{padding:4rem 1.05rem}.services{gap:1px}.card{min-height:auto;padding:1.7rem 1.2rem}.kits{gap:1rem}.kit{padding:1.8rem 1.25rem}.showcase{margin-top:2rem}.panel{padding:2rem 1.25rem;min-height:320px}.mock{min-height:160px}.process,.testimonials{gap:.8rem}.form{padding:1rem;border-radius:22px}.wa-fixed{right:1rem;bottom:1rem;width:58px;height:58px}.admin-open{left:1rem;bottom:4.95rem;padding:.75rem .9rem;font-size:.68rem}
-}
-@media(max-width:768px){
-  .marquee-top{font-size:.58rem;padding:.3rem 0}nav{top:1.35rem}.badge{font-size:.58rem;line-height:1.35;padding:.55rem .75rem}.hero{min-height:auto}h1{font-size:clamp(2.55rem,15vw,3.25rem);line-height:.95;letter-spacing:-.045em}.title{font-size:clamp(2rem,10vw,2.8rem)}.lead{font-size:.95rem}.services,.kits,.showcase,.process,.testimonials,.hero-metrics,.form-row{grid-template-columns:1fr}.kit.popular{transform:none}.kit .big{font-size:3.2rem}.float{display:none!important}.ticker{padding:.75rem 0}.ticker span{font-size:.85rem}.admin-panel{align-items:stretch;padding:0}.admin-box{width:100%;height:100dvh;max-height:none;border-radius:0;padding:1rem;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}.admin-grid{grid-template-columns:1fr}.admin-actions{display:grid;grid-template-columns:1fr}.admin-actions .admin-btn{width:100%}footer{display:grid;text-align:center;justify-content:center;padding:2rem 1rem 6rem}
-}
-@media(max-width:390px){
-  .hero{padding-left:.85rem;padding-right:.85rem}h1{font-size:2.35rem}.btn{font-size:.66rem;padding:.9rem 1rem}.card,.kit,.panel,.step,.quote{padding:1.35rem 1rem}.diamond{width:128px;height:128px}.diamond span{font-size:3.9rem}.mock b{font-size:1.55rem}.price{font-size:1.8rem}
-}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+    footer{background:#020d17;color:#8fa5b6;padding:28px 0}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    .footer-brand{display:flex;align-items:center;gap:14px}
+    .footer-logo{
+      width:56px;height:56px;object-fit:contain;border-radius:50%;
+      background:#fff;padding:4px;box-shadow:0 10px 24px rgba(0,0,0,.16)
+    }
+    .footer-row strong{color:#fff}.footer-mini{font-size:12px}
 
-</style>
+    .wa{
+      position:fixed;right:22px;bottom:22px;z-index:40;width:58px;height:58px;border-radius:50%;
+      display:grid;place-items:center;background:#24d366;color:#fff;font-size:25px;font-weight:900;
+      box-shadow:0 15px 35px rgba(0,0,0,.25);transition:.25s
+    }
+    .wa:hover{transform:translateY(-4px) scale(1.03)}
+
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media (max-width:980px){
+      .menu{display:none}.hamb{display:block}
+      .hero-grid,.cta-box{grid-template-columns:1fr}
+      .hero{padding-top:125px}
+      .hero-visual{min-height:500px}
+      .strip{grid-template-columns:1fr 1fr}
+      .cards,.package-grid{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .portfolio-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .work:first-child{grid-row:auto}.work:nth-child(4){grid-column:auto}
+      .fusion-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .container{width:min(100% - 24px,1180px)}
+      .nav{height:68px}.brand-logo{width:48px;height:48px}.brand-text small{display:none}.nav-cta{display:none}
+      .hero{min-height:auto;padding:108px 0 74px}
+      .hero-grid{gap:36px}
+      h1{font-size:50px}
+      .hero-lead{font-size:16px}
+      .hero-actions .btn{width:100%}
+      .hero-visual{min-height:430px}
+      .screen{left:0;height:320px}.screen-inner{padding:20px;grid-template-columns:1fr}.dash{display:none}
+      .phone{width:150px;height:300px;right:-4px}.phone h4{font-size:20px}.float-card{width:205px;left:0;bottom:8px}
+      section{padding:72px 0}
+      .strip,.cards,.steps,.package-grid,.portfolio-grid{grid-template-columns:1fr}
+      .strip{padding:16px}
+      .portfolio-grid{grid-template-rows:none}.work{min-height:240px}
+      .brand-panel{padding:28px}.brand-panel .bigmark{font-size:68px}
+      .section-head p{font-size:16px}
+      .contact-showcase,.contact-destination{grid-template-columns:1fr}
+      .footer-row{flex-direction:column;align-items:flex-start}
+    }
+  </style>
 </head>
 <body>
-<div class="marquee-top"><span>🔥 Identidade visual • Flyers • Avatar 3D • Loja Nova • Artes que vendem • WhatsApp direto &nbsp;&nbsp;&nbsp; 🔥 Identidade visual • Flyers • Avatar 3D • Loja Nova • Artes que vendem • WhatsApp direto &nbsp;&nbsp;&nbsp;</span></div>
 
-<nav>
-  <a class="logo" href="#">Hadan<b>.Alves</b></a>
-  <ul class="navlinks" id="navlinks">
-    <li><a href="#servicos">Serviços</a></li><li><a href="#kits">Kits</a></li><li><a href="#portfolio">Portfólio</a></li><li><a href="#processo">Processo</a></li><li><a class="nav-cta" href="#contato">Orçamento</a></li>
-  </ul>
-  <button class="hamb" type="button" aria-label="Abrir menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
-</nav>
-
-<header class="hero">
-  <div class="grid-lines"></div>
-  <div class="hero-content reveal">
-    <div class="badge"><i></i> Design gráfico premium para marcas que querem vender mais</div>
-    <h1>Seu negócio com aparência de <em>marca grande</em>.</h1>
-    <p>Flyers, logos, avatares 3D, pôsteres, edição de fotos e projeto visual para loja. Um visual forte, moderno e preparado para chamar atenção nas redes e no ponto de venda.</p>
-    <div class="hero-actions">
-      <a class="btn btn-gold" target="_blank" href="https://wa.me/5513991802942?text=Olá%20Hadan!%20Quero%20um%20orçamento%20para%20criar%20uma%20arte%20profissional.">Quero orçamento agora →</a>
-      <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
-    </div>
-    <div class="hero-metrics">
-      <div class="metric"><strong>500+</strong><span>clientes atendidos</span></div>
-      <div class="metric"><strong>24h</strong><span>entrega rápida</span></div>
-      <div class="metric"><strong>100%</strong><span>visual profissional</span></div>
-    </div>
-  </div>
-  <div class="hero-visual reveal" id="heroVisual">
-    <div id="heroCarousel" class="hero-carousel" aria-label="Fotos principais do Hero"><img id="heroAdminImage" class="hero-admin-img active" alt="Imagem principal editável"></div>
-    <div class="orbit"><div class="monogram"><div class="diamond"><span>H</span></div></div></div>
-    <div class="float f1"><small>serviço destaque</small><b>Flyer Top</b><p>arte chamativa para vender</p></div>
-    <div class="float f2"><small>contato direto</small><b>WhatsApp</b><p>(13) 99180-2942</p></div>
-    <div class="float f3"><small>projeto especial</small><b>Loja Nova</b><p>visual completo para inaugurar</p></div>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#inicio">
+      <img class="brand-logo" src="logo-hs-hn-correta.png" alt="Logo HS Start Digital e HN Marketing" />
+      <div class="brand-text">
+        <strong>HS START DIGITAL <span class="brand-x">×</span> HN MARKETING</strong>
+        <small>TECNOLOGIA • CRIAÇÃO • PRESENÇA DIGITAL</small>
+      </div>
+    </a>
+    <nav class="menu">
+      <a href="#servicos">Serviços</a>
+      <a href="#uniao">HS + HN</a>
+      <a href="#processo">Processo</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/5513982105058?text=Olá!%20Quero%20um%20orçamento%20para%20meu%20projeto." target="_blank">PEDIR ORÇAMENTO</a>
+    <button class="hamb" aria-label="Menu" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button>
   </div>
 </header>
 
-<div class="ticker"><div>
-  <span><b>✦</b> EDIÇÃO DE FOTOS</span><span><b>✦</b> FLYERS TOP</span><span><b>✦</b> CRIAÇÃO DE MARCAS</span><span><b>✦</b> PÔSTERES</span><span><b>✦</b> AVATAR 3D</span><span><b>✦</b> PROJETO LOJA NOVA</span>
-  <span><b>✦</b> EDIÇÃO DE FOTOS</span><span><b>✦</b> FLYERS TOP</span><span><b>✦</b> CRIAÇÃO DE MARCAS</span><span><b>✦</b> PÔSTERES</span><span><b>✦</b> AVATAR 3D</span><span><b>✦</b> PROJETO LOJA NOVA</span>
-</div></div>
+<main>
+  <section class="hero" id="inicio">
+    <div class="orb one"></div><div class="orb two"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> DA IDEIA À CRIAÇÃO, DA CRIAÇÃO À PRESENÇA DIGITAL</div>
+        <h1>Sua ideia merece virar algo <span class="blue">profissional</span>, marcante e <span class="gold">inesquecível.</span></h1>
+        <p class="hero-lead">
+          A <strong>HS Start Digital</strong> transforma ideias em sites e sistemas. A <strong>HN Marketing</strong> transforma conceitos em identidade e materiais de comunicação.
+          Nosso foco é <strong>criação</strong>: desenvolver a presença digital e visual da sua empresa com personalidade, qualidade e profissionalismo.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contato">COMEÇAR MEU PROJETO →</a>
+          <a class="btn btn-ghost" href="#servicos">VER SOLUÇÕES</a>
+        </div>
+        <div class="trust">
+          <span><i class="check">✓</i> Projetos responsivos</span>
+          <span><i class="check">✓</i> Estratégia personalizada</span>
+          <span><i class="check">✓</i> Foco em resultado</span>
+        </div>
+      </div>
 
-<section id="servicos">
-  <div class="eyebrow reveal">Especialidades</div>
-  <h2 class="title reveal">Tudo que sua marca precisa para <em>aparecer, encantar e vender</em>.</h2>
-  <p class="lead reveal">Serviços pensados para empreendedores, lojas, perfis comerciais e criadores que precisam de artes bonitas, objetivas e com cara profissional.</p>
-  <div class="services reveal">
-    <div class="card"><div class="icon">✦</div><h3>Edição de Fotos</h3><p>Correção de luz, cores, nitidez, remoção de fundo e acabamento profissional.</p><div class="price">R$15 <small>por foto</small></div></div>
-    <div class="card"><div class="icon">⚡</div><h3>Flyer Top</h3><p>Arte impactante para promoção, divulgação, lançamento, campanha e redes sociais.</p><div class="price">R$40 <small>por flyer</small></div></div>
-    <div class="card"><div class="icon">◆</div><h3>Criação de Marca</h3><p>Logo exclusiva, conceito visual, versões para redes sociais e impressão.</p><div class="price">R$150 <small>por marca</small></div></div>
-    <div class="card"><div class="icon">▣</div><h3>Pôster Profissional</h3><p>Design moderno, chamativo e pronto para divulgação digital ou impressa.</p><div class="price">R$60 <small>por pôster</small></div></div>
-    <div class="card"><div class="icon">☻</div><h3>Avatar 3D</h3><p>Avatar personalizado estilo cartoon para perfil, loja, marca ou campanha.</p><div class="price">R$50 <small>por avatar</small></div></div>
-  </div>
-</section>
-
-<section class="dark" id="kits">
-  <div class="eyebrow reveal">Kits promocionais</div>
-  <h2 class="title reveal">Pacotes prontos para começar com <em>impacto</em>.</h2>
-  <div class="kits reveal">
-    <div class="kit"><h3>Kit Básico</h3><p>Ideal para quem quer divulgar rápido com uma arte forte e avatar profissional.</p><div class="big">R$80</div><ul><li>1 Flyer Top</li><li>1 Avatar 3D</li><li>Entrega rápida</li></ul><a class="btn btn-ghost" target="_blank" href="https://wa.me/5513991802942?text=Olá!%20Quero%20o%20Kit%20Básico.">Pedir kit</a></div>
-    <div class="kit popular"><span class="tag">mais pedido</span><h3>Kit Empreendedor</h3><p>Perfeito para loja, página comercial ou marca que está começando.</p><div class="big">R$160</div><ul><li>1 Flyer Top</li><li>1 Logo profissional</li><li>Visual para redes sociais</li></ul><a class="btn btn-gold" target="_blank" href="https://wa.me/5513991802942?text=Olá!%20Quero%20o%20Kit%20Empreendedor.">Quero esse</a></div>
-    <div class="kit"><h3>Kit Completo</h3><p>O pacote mais completo para deixar sua marca pronta para divulgar.</p><div class="big">R$240</div><ul><li>1 Flyer + 1 Logo</li><li>1 Avatar + 1 Pôster</li><li>Arquivos em alta resolução</li></ul><a class="btn btn-ghost" target="_blank" href="https://wa.me/5513991802942?text=Olá!%20Quero%20o%20Kit%20Completo.">Pedir kit</a></div>
-  </div>
-</section>
-
-<section id="portfolio">
-  <div class="eyebrow reveal">Portfólio visual</div>
-  <h2 class="title reveal">Uma vitrine com cara de <em>agência premium</em>.</h2>
-  <p class="lead reveal">Espaço preparado para inserir artes reais, cases, logos, flyers, avatares e campanhas.</p>
-  <div class="showcase reveal">
-    <div class="panel">
-      <h3>Campanhas que chamam atenção no primeiro olhar.</h3>
-      <p>Use esta área para destacar o principal projeto, campanha de venda, avatar ou arte comemorativa.</p>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="screen">
+          <div class="browserbar"><i></i><i></i><i></i><div class="browser-url"></div></div>
+          <div class="screen-inner">
+            <div class="mini-copy">
+              <span class="pill">HS START DIGITAL</span>
+              <h3>SUA EMPRESA<br>NO MUNDO DIGITAL.</h3>
+              <p>Presença profissional, experiência moderna e tecnologia pensada para vender mais.</p>
+              <span class="mini-btn">SAIBA MAIS</span>
+            </div>
+            <div class="dash">
+              <small style="color:#9bcfff;font-weight:800">CRESCIMENTO DIGITAL</small>
+              <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone">
+          <small>HN MARKETING</small>
+          <h4>CRIAÇÃO<br>QUE MARCA.</h4>
+          <p>Identidade, artes e materiais digitais para sua marca comunicar com força e personalidade.</p>
+          <div class="phone-chart"><div class="line-chart"></div></div>
+        </div>
+        <div class="float-card">
+          <b>CRIAÇÃO COMPLETA</b>
+          <strong>HS + HN</strong>
+          <span>Tecnologia + criação visual, em uma única identidade.</span>
+        </div>
+      </div>
     </div>
-    <div class="mock-grid">
-      <div class="mock"><b>FLYER</b></div><div class="mock"><b>LOGO</b></div><div class="mock"><b>AVATAR</b></div><div class="mock"><b>POSTER</b></div>
+  </section>
+
+  <div class="brand-strip">
+    <div class="container strip">
+      <div class="strip-item"><div class="strip-icon">↗</div><div><strong>Presença digital</strong><small>Marca forte e profissional</small></div></div>
+      <div class="strip-item"><div class="strip-icon">✓</div><div><strong>Segurança e qualidade</strong><small>Soluções confiáveis</small></div></div>
+      <div class="strip-item"><div class="strip-icon">⚡</div><div><strong>Mais velocidade</strong><small>Execução objetiva</small></div></div>
+      <div class="strip-item"><div class="strip-icon">▥</div><div><strong>Criação com propósito</strong><small>Projetos pensados para sua marca</small></div></div>
     </div>
   </div>
-</section>
 
-<section class="dark" id="processo">
-  <div class="eyebrow reveal">Como funciona</div>
-  <h2 class="title reveal">Atendimento simples, rápido e <em>sem enrolação</em>.</h2>
-  <div class="process reveal">
-    <div class="step"><b>01</b><h3>Chamada</h3><p>Você chama no WhatsApp e explica o que precisa criar.</p></div>
-    <div class="step"><b>02</b><h3>Briefing</h3><p>Definimos estilo, objetivo, cores, texto e referências.</p></div>
-    <div class="step"><b>03</b><h3>Criação</h3><p>A arte é desenvolvida com visual profissional e foco em resultado.</p></div>
-    <div class="step"><b>04</b><h3>Entrega</h3><p>Você recebe os arquivos em alta qualidade, prontos para uso.</p></div>
-  </div>
-</section>
+  <section class="services" id="servicos">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">NOSSOS SERVIÇOS</div>
+        <h2>Da primeira ideia à presença digital completa.</h2>
+        <p>Um conjunto de soluções para quem quer começar com profissionalismo ou renovar sua presença com tecnologia, design e criação.</p>
+      </div>
 
-<section>
-  <div class="eyebrow reveal">Prova social</div>
-  <h2 class="title reveal">Clientes lembram de quem entrega <em>qualidade</em>.</h2>
-  <div class="testimonials reveal">
-    <div class="quote"><p>“Minha divulgação ficou muito mais profissional. A arte chamou atenção e deixou minha loja com outro nível.”</p><b>Cliente de loja</b></div>
-    <div class="quote"><p>“Entrega rápida, visual bonito e atendimento fácil. Já quero fechar outros materiais.”</p><b>Empreendedora</b></div>
-    <div class="quote"><p>“O avatar ficou com cara de marca, perfeito para Instagram e campanhas.”</p><b>Criador digital</b></div>
-  </div>
-</section>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="icon">&lt;/&gt;</div>
+          <h3>Criação de Sites</h3>
+          <p>Sites modernos, rápidos e feitos para passar confiança e transformar visitas em contatos.</p>
+          <ul>
+            <li>Institucionais e landing pages</li>
+            <li>100% responsivos</li>
+            <li>SEO básico e performance</li>
+            <li>Integração com WhatsApp</li>
+          </ul>
+        </article>
 
-<section class="final" id="contato">
-  <div class="eyebrow reveal">Orçamento rápido</div>
-  <h2 class="title reveal">Pronto para deixar sua marca <em>inesquecível</em>?</h2>
-  <p class="lead reveal">Preencha abaixo e seja direcionado automaticamente para o WhatsApp com sua solicitação pronta.</p>
-  <form class="form reveal" onsubmit="sendWA(event)">
-    <div class="form-row">
-      <input id="nome" required placeholder="Seu nome">
-      <input id="whats" required placeholder="Seu WhatsApp">
+        <article class="card green reveal">
+          <div class="icon">⌘</div>
+          <h3>Sistemas Online</h3>
+          <p>Soluções sob medida para organizar processos, vendas, estoque, atendimento e operação.</p>
+          <ul>
+            <li>Painéis administrativos</li>
+            <li>PDV, estoque e relatórios</li>
+            <li>Automação de processos</li>
+            <li>Acesso em qualquer dispositivo</li>
+          </ul>
+        </article>
+
+        <article class="card gold reveal">
+          <div class="icon">↗</div>
+          <h3>Criação para Marketing</h3>
+          <p>A HN Marketing desenvolve materiais visuais e criativos para sua empresa se apresentar com uma imagem profissional.</p>
+          <ul>
+            <li>Artes para redes sociais</li>
+            <li>Flyers e materiais promocionais</li>
+            <li>Apresentações e peças digitais</li>
+            <li>Criativos personalizados</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon">◆</div>
+          <h3>Identidade Visual</h3>
+          <p>Uma marca forte começa na identidade. Criamos uma presença visual coerente, profissional e memorável.</p>
+          <ul>
+            <li>Logo e assinatura visual</li>
+            <li>Paleta e tipografia</li>
+            <li>Materiais para redes sociais</li>
+            <li>Padronização de comunicação</li>
+          </ul>
+        </article>
+
+        <article class="card green reveal">
+          <div class="icon">◎</div>
+          <h3>Automação & Integrações</h3>
+          <p>Menos tarefas repetitivas e mais controle com fluxos inteligentes e integrações úteis.</p>
+          <ul>
+            <li>Formulários e captação</li>
+            <li>WhatsApp e atendimento</li>
+            <li>Dashboards e indicadores</li>
+            <li>Fluxos personalizados</li>
+          </ul>
+        </article>
+
+        <article class="card gold reveal">
+          <div class="icon">★</div>
+          <h3>Materiais & Lançamentos</h3>
+          <p>Criamos a estrutura visual necessária para apresentar produtos, serviços, promoções e novidades com impacto.</p>
+          <ul>
+            <li>Landing pages</li>
+            <li>Artes de lançamento</li>
+            <li>Catálogos e apresentações</li>
+            <li>Materiais para divulgação</li>
+          </ul>
+        </article>
+      </div>
     </div>
-    <select id="servico" required>
-      <option value="">Selecione o serviço</option>
-      <option>Edição de Fotos</option><option>Flyer Top</option><option>Criação de Marca</option><option>Pôster Profissional</option><option>Avatar 3D</option><option>Kit Básico</option><option>Kit Empreendedor</option><option>Kit Completo</option><option>Projeto Loja Nova</option>
-    </select>
-    <textarea id="msg" placeholder="Conte rapidamente o que você precisa..."></textarea>
-    <button class="btn btn-gold" type="submit">Enviar para WhatsApp →</button>
-  </form>
-</section>
+  </section>
+
+  <section class="fusion" id="uniao">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">DUAS FRENTES. UMA ESTRATÉGIA.</div>
+        <h2>HS desenvolve. HN cria.</h2>
+        <p>O grande diferencial é unir desenvolvimento e criação visual desde o início, deixando site, sistema, identidade e materiais com a mesma linguagem profissional.</p>
+      </div>
+
+      <div class="fusion-grid">
+        <div class="brand-panel hs reveal">
+          <div class="bigmark">HS</div>
+          <h3>HS Start Digital</h3>
+          <p>Estrutura digital, sites, sistemas, páginas, automações e experiência online. É a base técnica que deixa sua empresa pronta para crescer.</p>
+          <div class="tagline">TECNOLOGIA QUE COLOCA A IDEIA DE PÉ.</div>
+        </div>
+        <div class="brand-panel hn reveal">
+          <div class="bigmark">HN</div>
+          <h3>HN Marketing</h3>
+          <p>Identidade visual, artes, flyers, apresentações e peças digitais. É a frente criativa que dá forma, personalidade e força à comunicação da sua marca.</p>
+          <div class="tagline">CRIAÇÃO QUE DÁ PERSONALIDADE À MARCA.</div>
+        </div>
+      </div>
+      <div class="fusion-arrow reveal">JUNTOS: <span>tecnologia + identidade + criação + presença digital</span></div>
+    </div>
+  </section>
+
+  <section class="process" id="processo">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">COMO FUNCIONA</div>
+        <h2>Sem enrolação. Com direção.</h2>
+        <p>Você explica a ideia, nós organizamos o caminho e entregamos um projeto com lógica de negócio — não apenas “algo bonito”.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-num">01 • DIAGNÓSTICO</div><h3>Entendemos seu negócio</h3><p>Objetivo, público, diferenciais, concorrência e o que precisa melhorar primeiro.</p></div>
+        <div class="step reveal"><div class="step-num">02 • ESTRATÉGIA</div><h3>Montamos o plano</h3><p>Definimos estrutura, posicionamento, recursos, mensagens, canais e prioridades.</p></div>
+        <div class="step reveal"><div class="step-num">03 • PRODUÇÃO</div><h3>Criamos e validamos</h3><p>Design, desenvolvimento, conteúdo, configuração e ajustes com foco em qualidade.</p></div>
+        <div class="step reveal"><div class="step-num">04 • CRESCIMENTO</div><h3>Publicamos e evoluímos</h3><p>Entramos no ar, medimos o desempenho e identificamos novos pontos de crescimento.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">O QUE PODEMOS CRIAR</div>
+        <h2>Criações que parecem grandes porque são pensadas como grandes.</h2>
+        <p>Aqui você pode substituir estes exemplos pelos seus trabalhos reais conforme o portfólio crescer.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="work reveal"><div class="mock"></div><small>Site + Branding</small><h3>Presença premium para empresa que quer subir de nível.</h3></div>
+        <div class="work reveal"><div class="mock"></div><small>Sistema Online</small><h3>Gestão simples, rápida e visual.</h3></div>
+        <div class="work reveal"><div class="mock"></div><small>Automação</small><h3>Menos retrabalho, mais controle.</h3></div>
+        <div class="work reveal"><div class="mock"></div><small>HN Marketing</small><h3>Criação visual que transforma ideias em comunicação.</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="packages">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">SOLUÇÕES POR MOMENTO</div>
+        <h2>Comece com a criação certa. Evolua sem perder sua identidade.</h2>
+        <p>Os pacotes abaixo são uma estrutura comercial voltada à criação. Os valores podem ser definidos depois conforme o tamanho de cada projeto.</p>
+      </div>
+      <div class="package-grid">
+        <div class="package reveal">
+          <span class="pill">COMEÇAR</span>
+          <h3>Start Digital</h3>
+          <p>Para quem precisa sair do improviso e ter presença profissional.</p>
+          <ul><li>Site institucional</li><li>Identidade visual básica</li><li>WhatsApp integrado</li><li>Configuração de presença digital</li></ul>
+          <a class="btn btn-ghost" style="border-color:#dce5ec;color:var(--navy)" href="#contato">QUERO COMEÇAR</a>
+        </div>
+        <div class="package featured reveal">
+          <span class="badge">MAIS COMPLETO</span>
+          <span class="pill">CRIAR</span>
+          <h3>HS + HN Completo</h3>
+          <p>Desenvolvimento + criação visual trabalhando como uma única identidade.</p>
+          <ul><li>Site ou landing page</li><li>Identidade visual</li><li>Artes para redes sociais</li><li>Flyers e materiais digitais</li><li>Padronização visual da marca</li></ul>
+          <a class="btn btn-primary" href="#contato">QUERO CRIAR</a>
+        </div>
+        <div class="package reveal">
+          <span class="pill">PERSONALIZAR</span>
+          <h3>Projeto Sob Medida</h3>
+          <p>Para empresas que precisam de uma criação personalizada unindo tecnologia, design e materiais digitais.</p>
+          <ul><li>Sistema sob medida</li><li>Site personalizado</li><li>Identidade visual completa</li><li>Materiais gráficos e digitais</li><li>Suporte evolutivo</li></ul>
+          <a class="btn btn-ghost" style="border-color:#dce5ec;color:var(--navy)" href="#contato">FALAR SOBRE PROJETO</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contato">
+    <div class="container cta-box">
+      <div class="reveal">
+        <div class="kicker" style="color:#7fc0ff">VAMOS COMEÇAR?</div>
+        <h2>Escolha com quem falar e transforme sua ideia em uma criação profissional.</h2>
+        <p>
+          Na aba de contato você encontra os dois canais oficiais. 
+          A <strong>HS Start Digital</strong> atende projetos de sites, sistemas e soluções digitais.
+          A <strong>HN Marketing</strong> atende a frente criativa, identidade e materiais de comunicação.
+        </p>
+
+        <div class="trust">
+          <span><i class="check">✓</i> Atendimento direto</span>
+          <span><i class="check">✓</i> Projeto personalizado</span>
+          <span><i class="check">✓</i> Dois contatos oficiais</span>
+        </div>
+
+        <div class="contact-showcase">
+          <div class="contact-option">
+            <strong>HS START DIGITAL</strong>
+            <div class="contact-number">(13) 98210-5058</div>
+            <small>Sites, sistemas e soluções digitais.</small>
+            <a href="https://wa.me/5513982105058?text=Olá!%20Vim%20pelo%20site%20e%20quero%20falar%20com%20a%20HS%20Start%20Digital." target="_blank">✆ CHAMAR HS NO WHATSAPP</a>
+          </div>
+
+          <div class="contact-option hn-contact">
+            <strong>HN MARKETING</strong>
+            <div class="contact-number">(13) 99180-2942</div>
+            <small>Criação visual, identidade e materiais digitais.</small>
+            <a href="https://wa.me/5513991802942?text=Olá!%20Vim%20pelo%20site%20e%20quero%20falar%20com%20a%20HN%20Marketing." target="_blank">✆ CHAMAR HN NO WHATSAPP</a>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-box reveal" onsubmit="event.preventDefault()">
+        <div class="pill">ENVIE SUA IDEIA</div>
+
+        <label for="nome">SEU NOME</label>
+        <input id="nome" required placeholder="Digite seu nome" />
+
+        <label for="empresa">EMPRESA / PROJETO</label>
+        <input id="empresa" placeholder="Nome da empresa ou ideia" />
+
+        <label for="msg">O QUE VOCÊ PRECISA?</label>
+        <textarea id="msg" required placeholder="Ex.: quero criar um site, sistema, logo, flyer ou materiais digitais para minha empresa..."></textarea>
+
+        <label>ESCOLHA PARA QUEM ENVIAR</label>
+        <div class="contact-destination">
+          <button class="btn btn-primary" type="button" onclick="sendWhatsApp('5513982105058','HS Start Digital')">
+            WHATSAPP HS →
+          </button>
+          <button class="btn btn-hn" type="button" onclick="sendWhatsApp('5513991802942','HN Marketing')">
+            WHATSAPP HN →
+          </button>
+        </div>
+
+        <p class="contact-note">
+          HS Start Digital: (13) 98210-5058 • henriquesasaki99@outlook.com<br>
+          HN Marketing: (13) 99180-2942
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <div class="footlogo">HADAN ALVES</div>
-  <div>© 2026 Hadan Alves — Design Gráfico Premium</div>
-  <div>Instagram • WhatsApp • Portfólio</div>
+  <div class="container footer-row">
+    <div class="footer-brand">
+      <img class="footer-logo" src="logo-hs-hn-correta.png" alt="Logo HS Start Digital e HN Marketing" />
+      <div>
+        <strong>HS START DIGITAL × HN MARKETING</strong>
+        <div class="footer-mini">Tecnologia que desenvolve. Criação que dá identidade.</div>
+      </div>
+    </div>
+    <div class="footer-mini">© <span id="year"></span> Todos os direitos reservados.</div>
+  </div>
 </footer>
 
-<a class="wa-fixed" target="_blank" title="Falar no WhatsApp" href="https://wa.me/5513991802942?text=Olá%20Hadan!%20Quero%20um%20orçamento.">☏</a>
-
-
-<button class="admin-open" onclick="openAdmin()">ADM</button>
-
-<div class="admin-panel" id="adminPanel">
-  <div class="admin-box">
-    <button class="admin-close" onclick="closeAdmin()">×</button>
-    <h2>Painel ADM</h2>
-    <p>Senha padrão: <strong>admin123</strong>. Após entrar, use o Editor completo do site para alterar textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos.</p>
-
-    <div id="adminLogin">
-      <div class="admin-field">
-        <label>Senha de acesso</label>
-        <input type="password" id="adminPass" placeholder="Digite a senha">
-      </div>
-      <div class="admin-actions">
-        <button class="admin-btn gold" onclick="loginAdmin()">Entrar no ADM</button>
-      </div>
-    </div>
-
-    <div id="adminControls" style="display:none">
-      <div class="admin-actions">
-        <button class="admin-btn gold" onclick="toggleEditMode()">Ativar/desativar edição</button>
-        <button class="admin-btn" onclick="saveAll()">Salvar alterações</button>
-        <button class="admin-btn red" onclick="resetSite()">Resetar site</button>
-      </div>
-
-      <div class="admin-grid">
-        <div class="admin-field">
-          <label>Número do WhatsApp</label>
-          <input id="admWhatsapp" placeholder="Ex: 5513991802942">
-        </div>
-        <div class="admin-field">
-          <label>Mensagem padrão WhatsApp</label>
-          <input id="admWAMsg" placeholder="Olá! Quero um orçamento.">
-        </div>
-        <div class="admin-field">
-          <label>Cor dourada principal</label>
-          <input id="admGold" type="color" value="#d6a83d">
-        </div>
-        <div class="admin-field">
-          <label>Cor dourada clara</label>
-          <input id="admGold2" type="color" value="#ffd36a">
-        </div>
-        <div class="admin-field">
-          <label>Imagem/avatar principal por URL</label>
-          <input id="admHeroUrl" placeholder="Cole a URL da imagem">
-        </div>
-        <div class="admin-field">
-          <label>Ou carregar imagem/avatar do computador</label>
-          <input id="admHeroFile" type="file" accept="image/*">
-        </div>
-        <div class="admin-field">
-          <label>Título da página</label>
-          <input id="admTitle" placeholder="Título da aba do navegador">
-        </div>
-        <div class="admin-field">
-          <label>Senha ADM nova</label>
-          <input id="admNewPass" placeholder="Digite uma nova senha">
-        </div>
-      </div>
-
-      <div class="admin-actions">
-        <button class="admin-btn gold" onclick="applyAdminSettings()">Aplicar configurações</button>
-        <button class="admin-btn" onclick="downloadEditedHTML()">Baixar HTML editado</button>
-        <button class="admin-btn red" onclick="logoutAdmin()">Sair do ADM</button>
-      </div>
-
-      <p style="margin-top:1rem">Dica: com a edição ativada, clique em títulos, descrições, preços, depoimentos, botões e rodapé para alterar o texto direto na página.</p>
-    </div>
-  </div>
-</div>
-
-<div class="admin-tip">Modo edição ativo — clique nos textos para alterar e depois salve.</div>
+<a class="wa" href="https://wa.me/5513982105058?text=Olá!%20Vim%20pelo%20site%20da%20HS%20Start%20Digital%20e%20HA%20Marketing." target="_blank" aria-label="WhatsApp">✆</a>
 
 <script>
-function toggleMenu(){
-  const nav=document.getElementById('navlinks');
-  const hamb=document.querySelector('.hamb');
-  nav.classList.toggle('open');
-  hamb && hamb.classList.toggle('active', nav.classList.contains('open'));
-}
-document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>{document.getElementById('navlinks').classList.remove('open');document.querySelector('.hamb')?.classList.remove('active')});
-try{
-  if('IntersectionObserver' in window){
-    const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);obs.unobserve(e.target)}})},{threshold:.08});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  }else{
-    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));
-  }
-}catch(err){
-  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));
-}
-function sendWA(e){
-  e.preventDefault();
-  const nome=document.getElementById('nome').value.trim();
-  const whats=document.getElementById('whats').value.trim();
-  const servico=document.getElementById('servico').value;
-  const msg=document.getElementById('msg').value.trim();
-  const texto=encodeURIComponent(`Olá Hadan! Quero um orçamento.\n\nNome: ${nome}\nWhatsApp: ${whats}\nServiço: ${servico}\nMensagem: ${msg}`);
-  window.open(`https://wa.me/5513991802942?text=${texto}`,'_blank');
-}
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ===== SCRIPT ADM ===== */
-const ADM_KEYS = {
-  html:'hadan_site_saved_html_v1',
-  settings:'hadan_site_settings_v1',
-  pass:'hadan_site_admin_pass_v1'
-};
+  function sendWhatsApp(numero, destino){
+    const nome = document.getElementById('nome').value.trim();
+    const empresa = document.getElementById('empresa').value.trim();
+    const msg = document.getElementById('msg').value.trim();
 
-function admPassword(){
-  return localStorage.getItem(ADM_KEYS.pass) || 'admin123';
-}
-
-function openAdmin(){
-  document.getElementById('adminPanel').classList.add('open');
-}
-function closeAdmin(){
-  document.getElementById('adminPanel').classList.remove('open');
-}
-function loginAdmin(){
-  const pass = document.getElementById('adminPass').value;
-  if(pass !== admPassword()){
-    alert('Senha incorreta.');
-    return;
-  }
-  document.getElementById('adminLogin').style.display='none';
-  document.getElementById('adminControls').style.display='block';
-  loadSettingsToPanel();
-}
-function logoutAdmin(){
-  document.body.classList.remove('admin-mode');
-  document.getElementById('adminLogin').style.display='block';
-  document.getElementById('adminControls').style.display='none';
-  document.getElementById('adminPass').value='';
-  closeAdmin();
-}
-function markEditable(){
-  const selectors = [
-    '.marquee-top span','.logo','.navlinks a','.badge','h1','.hero p','.btn',
-    '.metric strong','.metric span','.float small','.float b','.float p',
-    '.ticker span','.eyebrow','.title','.lead','.card h3','.card p','.price',
-    '.kit h3','.kit p','.kit .big','.kit li','.tag','.panel h3','.panel p',
-    '.mock b','.step h3','.step p','.quote p','.quote b','footer div','.footlogo'
-  ];
-  document.querySelectorAll(selectors.join(',')).forEach((el,idx)=>{
-    if(!el.id) el.dataset.admId = el.dataset.admId || ('adm_'+idx);
-    el.setAttribute('data-adm-edit','true');
-  });
-}
-function toggleEditMode(){
-  markEditable();
-  document.body.classList.toggle('admin-mode');
-  const editing = document.body.classList.contains('admin-mode');
-  document.querySelectorAll('[data-adm-edit]').forEach(el=>{
-    el.contentEditable = editing ? 'true' : 'false';
-  });
-}
-function saveAll(){
-  const data = {};
-  document.querySelectorAll('[data-adm-edit]').forEach((el,idx)=>{
-    const key = el.dataset.admId || ('adm_'+idx);
-    el.dataset.admId = key;
-    data[key] = el.innerHTML;
-  });
-  localStorage.setItem(ADM_KEYS.html, JSON.stringify(data));
-  applyAdminSettings();
-  alert('Alterações salvas com sucesso.');
-}
-function loadSavedText(){
-  markEditable();
-  const raw = localStorage.getItem(ADM_KEYS.html);
-  if(!raw) return;
-  try{
-    const data = JSON.parse(raw);
-    document.querySelectorAll('[data-adm-edit]').forEach((el,idx)=>{
-      const key = el.dataset.admId || ('adm_'+idx);
-      if(data[key] !== undefined) el.innerHTML = data[key];
-    });
-  }catch(e){}
-}
-function applyAdminSettings(){
-  const settings = {
-    whatsapp: document.getElementById('admWhatsapp').value.trim() || '5513991802942',
-    waMsg: document.getElementById('admWAMsg').value.trim() || 'Olá Hadan! Quero um orçamento.',
-    gold: document.getElementById('admGold').value || '#d6a83d',
-    gold2: document.getElementById('admGold2').value || '#ffd36a',
-    heroUrl: document.getElementById('admHeroUrl').value.trim(),
-    title: document.getElementById('admTitle').value.trim() || document.title
-  };
-  const newPass = document.getElementById('admNewPass').value.trim();
-  if(newPass) localStorage.setItem(ADM_KEYS.pass, newPass);
-
-  localStorage.setItem(ADM_KEYS.settings, JSON.stringify(settings));
-  applySettings(settings);
-  alert('Configurações aplicadas.');
-}
-function applySettings(settings){
-  document.documentElement.style.setProperty('--gold', settings.gold || '#d6a83d');
-  document.documentElement.style.setProperty('--gold2', settings.gold2 || '#ffd36a');
-  if(settings.title) document.title = settings.title;
-
-  const phone = settings.whatsapp || '5513991802942';
-  const msg = encodeURIComponent(settings.waMsg || 'Olá Hadan! Quero um orçamento.');
-  document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
-    a.href = `https://wa.me/${phone}?text=${msg}`;
-  });
-
-  const img = document.getElementById('heroAdminImage');
-  const visual = document.getElementById('heroVisual');
-  const carousel = document.getElementById('heroCarousel');
-  if(settings.heroUrl){
-    if(img){
-      img.src = settings.heroUrl;
-    }else if(carousel){
-      carousel.innerHTML = `<img id="heroAdminImage" class="hero-admin-img active" src="${settings.heroUrl}" alt="Imagem principal editável" loading="lazy" decoding="async">`;
-    }
-    visual?.classList.add('has-admin-img');
-  }else{
-    if(img) img.removeAttribute('src');
-    visual?.classList.remove('has-admin-img');
-  }
-}
-function loadSettingsToPanel(){
-  const settings = JSON.parse(localStorage.getItem(ADM_KEYS.settings) || '{}');
-  document.getElementById('admWhatsapp').value = settings.whatsapp || '5513991802942';
-  document.getElementById('admWAMsg').value = settings.waMsg || 'Olá Hadan! Quero um orçamento.';
-  document.getElementById('admGold').value = settings.gold || '#d6a83d';
-  document.getElementById('admGold2').value = settings.gold2 || '#ffd36a';
-  document.getElementById('admHeroUrl').value = settings.heroUrl || '';
-  document.getElementById('admTitle').value = settings.title || document.title;
-}
-function loadSettings(){
-  const settings = JSON.parse(localStorage.getItem(ADM_KEYS.settings) || '{}');
-  if(Object.keys(settings).length) applySettings(settings);
-}
-function resetSite(){
-  if(!confirm('Deseja apagar todas as alterações salvas neste navegador?')) return;
-  localStorage.removeItem(ADM_KEYS.html);
-  localStorage.removeItem(ADM_KEYS.settings);
-  location.reload();
-}
-function downloadEditedHTML(){
-  saveAll();
-  let doc = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-  const blob = new Blob([doc], {type:'text/html;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'site-hadan-editado.html';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-document.addEventListener('click', function(e){
-  if(!document.body.classList.contains('admin-mode')) return;
-  const a = e.target.closest('a');
-  if(a && a.hasAttribute('data-adm-edit')){
-    e.preventDefault();
-  }
-}, true);
-document.getElementById('admHeroFile')?.addEventListener('change', function(){
-  const file = this.files && this.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = function(ev){
-    document.getElementById('admHeroUrl').value = ev.target.result;
-    if(typeof applyAdminSettings === 'function') applyAdminSettings();
-  };
-  reader.readAsDataURL(file);
-});
-
-
-/* ===== FUNÇÕES MOBILE EXTRAS ===== */
-document.addEventListener('click', function(e){
-  const nav=document.getElementById('navlinks');
-  const hamb=document.querySelector('.hamb');
-  if(nav && hamb && nav.classList.contains('open') && !nav.contains(e.target) && !hamb.contains(e.target)){
-    nav.classList.remove('open');
-    hamb.classList.remove('active');
-  }
-});
-window.addEventListener('resize', function(){
-  const nav=document.getElementById('navlinks');
-  const hamb=document.querySelector('.hamb');
-  if(window.innerWidth > 1050 && nav){nav.classList.remove('open');hamb?.classList.remove('active')}
-});
-document.querySelectorAll('img').forEach(img=>{img.loading='lazy';img.decoding='async'});
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  markEditable();
-  loadSavedText();
-  loadSettings();
-});
-
-/* ===== ADM UNIVERSAL — TEXTOS, LINKS, FOTOS, FORMULÁRIO E VALORES ===== */
-(function(){
-  const UKEY = 'hadan_universal_admin_v3';
-  const PASSKEY = 'hadan_site_admin_pass_v1';
-  const DEFAULT_PHONE = '5513991802942';
-  const DEFAULT_MSG = 'Olá Hadan! Quero um orçamento.';
-
-  const qsa = (s, root=document) => Array.from(root.querySelectorAll(s));
-  const esc = (v='') => String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-  const fileToDataURL = file => new Promise(resolve => {
-    // Converte e comprime a foto antes de salvar/aplicar.
-    // Isso evita erro de localStorage quando o ADM envia fotos grandes do celular.
-    const reader = new FileReader();
-    reader.onload = function(e){
-      const img = new Image();
-      img.onload = function(){
-        const maxSide = 1400;
-        let w = img.naturalWidth || img.width;
-        let h = img.naturalHeight || img.height;
-        if(w > maxSide || h > maxSide){
-          const scale = Math.min(maxSide / w, maxSide / h);
-          w = Math.round(w * scale);
-          h = Math.round(h * scale);
-        }
-        const canvas = document.createElement('canvas');
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, w, h);
-        resolve(canvas.toDataURL('image/jpeg', 0.86));
-      };
-      img.onerror = function(){ resolve(e.target.result); };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-
-  const textSelectors = [
-    '.marquee-top span','.logo','.navlinks a','.badge','h1','.hero p','.btn',
-    '.metric strong','.metric span','.float small','.float b','.float p',
-    '.ticker span','.eyebrow','.title','.lead','.card h3','.card p','.price',
-    '.kit h3','.kit p','.kit .big','.kit li','.tag','.panel h3','.panel p',
-    '.mock b','.step h3','.step p','.quote p','.quote b','footer div','.footlogo',
-    'option'
-  ];
-
-  const imageSlots = [
-    {key:'hero', label:'Fotos do Hero / avatar principal (2 ou mais fotos)', selector:'#heroCarousel', kind:'heroCarousel'},
-    {key:'portfolio_principal', label:'Foto principal do Portfólio', selector:'.panel', kind:'background'},
-    {key:'portfolio_1', label:'Portfólio 1', selector:'.mock:nth-child(1)', kind:'background'},
-    {key:'portfolio_2', label:'Portfólio 2', selector:'.mock:nth-child(2)', kind:'background'},
-    {key:'portfolio_3', label:'Portfólio 3', selector:'.mock:nth-child(3)', kind:'background'},
-    {key:'portfolio_4', label:'Portfólio 4', selector:'.mock:nth-child(4)', kind:'background'}
-  ];
-
-  function getStore(){ try{return JSON.parse(localStorage.getItem(UKEY)||'{}')}catch(e){return {}} }
-  function setStore(data){ localStorage.setItem(UKEY, JSON.stringify(data)); }
-  function stableKey(el, prefix, index){
-    if(!el.dataset.adminKey){
-      const label = (el.id || el.className || el.tagName || prefix).toString().replace(/\s+/g,'_').slice(0,35);
-      el.dataset.adminKey = `${prefix}_${index}_${label}`;
-    }
-    return el.dataset.adminKey;
-  }
-
-  function collectTextElements(){
-    const found = [];
-    qsa(textSelectors.join(',')).forEach((el, i)=>{
-      if(el.closest('.admin-panel') || el.closest('script') || el.closest('style')) return;
-      if(!el.textContent.trim() && el.tagName !== 'OPTION') return;
-      const key = stableKey(el, 'txt', found.length);
-      found.push({el, key, label: `${el.tagName.toLowerCase()} ${el.id ? '#'+el.id : ''} ${el.className ? '.'+String(el.className).replace(/\s+/g,'.') : ''}`.trim()});
-    });
-    return found;
-  }
-
-  function collectLinks(){
-    const arr=[];
-    qsa('a[href]').forEach((el)=>{
-      if(el.closest('.admin-panel')) return;
-      const key = stableKey(el, 'link', arr.length);
-      arr.push({el, key, label: el.textContent.trim() || el.title || el.href});
-    });
-    return arr;
-  }
-
-  function collectFields(){
-    const arr=[];
-    qsa('input, textarea, select').forEach((el)=>{
-      if(el.closest('.admin-panel')) return;
-      const key = stableKey(el, 'field', arr.length);
-      arr.push({el, key, label: el.placeholder || el.id || el.name || el.tagName});
-    });
-    return arr;
-  }
-
-  function parseImageList(value){
-    if(Array.isArray(value)) return value.filter(Boolean);
-    return String(value || '').split(/\n|,/).map(v=>v.trim()).filter(Boolean);
-  }
-
-  function showHeroSlide(index){
-    const carousel = document.getElementById('heroCarousel');
-    if(!carousel) return;
-    const imgs = Array.from(carousel.querySelectorAll('img'));
-    const dots = Array.from(carousel.querySelectorAll('.hero-dot'));
-    if(!imgs.length) return;
-    const current = ((index % imgs.length) + imgs.length) % imgs.length;
-    carousel.dataset.index = String(current);
-    imgs.forEach((img,i)=>img.classList.toggle('active', i===current));
-    dots.forEach((dot,i)=>dot.classList.toggle('active', i===current));
-  }
-  window.showHeroSlide = showHeroSlide;
-  window.nextHeroSlide = function(step){
-    const carousel = document.getElementById('heroCarousel');
-    const current = Number(carousel?.dataset.index || 0);
-    showHeroSlide(current + step);
-  };
-
-  function applyImage(slot, url){
-    const el = document.querySelector(slot.selector);
-    if(!el) return;
-    if(slot.kind === 'heroCarousel'){
-      const urls = parseImageList(url);
-      const visual = document.getElementById('heroVisual');
-      if(urls.length){
-        el.innerHTML = urls.map((src,i)=>`<img class="hero-admin-img ${i===0?'active':''}" src="${esc(src)}" alt="Imagem principal ${i+1}" loading="lazy" decoding="async">`).join('') +
-          (urls.length > 1 ? `<button class="hero-arrow prev" type="button" onclick="nextHeroSlide(-1)" aria-label="Foto anterior">‹</button><button class="hero-arrow next" type="button" onclick="nextHeroSlide(1)" aria-label="Próxima foto">›</button><div class="hero-dots">${urls.map((_,i)=>`<button class="hero-dot ${i===0?'active':''}" type="button" onclick="showHeroSlide(${i})" aria-label="Ir para foto ${i+1}"></button>`).join('')}</div>` : '');
-        el.dataset.index = '0';
-        visual?.classList.add('has-admin-img');
-        enableHeroSwipe();
-      }else{
-        el.innerHTML = '<img id="heroAdminImage" class="hero-admin-img active" alt="Imagem principal editável">';
-        visual?.classList.remove('has-admin-img');
-      }
+    if(!nome || !msg){
+      alert('Preencha seu nome e conte o que você precisa antes de abrir o WhatsApp.');
       return;
     }
-    if(slot.kind === 'img'){
-      if(url){
-        el.src = url;
-        document.getElementById('heroVisual')?.classList.add('has-admin-img');
-      }else{
-        el.removeAttribute('src');
-        document.getElementById('heroVisual')?.classList.remove('has-admin-img');
-      }
-    }else{
-      el.classList.add('adm-photo-slot');
-      if(url){
-        el.style.backgroundImage = `linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.62)), url('${url}')`;
-        el.style.backgroundSize = 'cover';
-        el.style.backgroundPosition = 'center';
-      }else{
-        el.style.backgroundImage = '';
-      }
-    }
+
+    const texto =
+`Olá, ${destino}! Meu nome é ${nome}.
+Empresa/projeto: ${empresa || 'Não informado'}.
+
+Quero falar sobre:
+${msg}
+
+Vim pelo site HS Start Digital + HN Marketing.`;
+
+    window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(texto), '_blank');
   }
 
-  function enableHeroSwipe(){
-    const carousel = document.getElementById('heroCarousel');
-    if(!carousel || carousel.dataset.swipeReady) return;
-    carousel.dataset.swipeReady = '1';
-    let startX = 0;
-    carousel.addEventListener('touchstart', e=>{startX = e.touches[0].clientX;}, {passive:true});
-    carousel.addEventListener('touchend', e=>{
-      const dx = e.changedTouches[0].clientX - startX;
-      if(Math.abs(dx) > 45) window.nextHeroSlide(dx < 0 ? 1 : -1);
-    }, {passive:true});
-  }
-
-  function applyDataToSite(data){
-    data = data || {};
-    collectTextElements().forEach(item=>{
-      if(data.texts && Object.prototype.hasOwnProperty.call(data.texts, item.key)) item.el.innerHTML = data.texts[item.key];
-    });
-    collectLinks().forEach(item=>{
-      if(data.links && Object.prototype.hasOwnProperty.call(data.links, item.key)) item.el.setAttribute('href', data.links[item.key]);
-    });
-    collectFields().forEach(item=>{
-      const v = data.fields && data.fields[item.key];
-      if(!v) return;
-      if(v.placeholder !== undefined) item.el.placeholder = v.placeholder;
-      if(item.el.tagName === 'SELECT' && v.options !== undefined){
-        item.el.innerHTML = String(v.options).split('\n').map(line=>line.trim()).filter(Boolean).map((line,idx)=>`<option value="${esc(idx===0 && line.toLowerCase().includes('selecione') ? '' : line)}">${esc(line)}</option>`).join('');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
-    if(data.images){ imageSlots.forEach(slot=>applyImage(slot, data.images[slot.key] || '')); }
-    if(data.settings){
-      document.title = data.settings.title || document.title;
-      document.documentElement.style.setProperty('--gold', data.settings.gold || '#d6a83d');
-      document.documentElement.style.setProperty('--gold2', data.settings.gold2 || '#ffd36a');
-      updateWhatsapp(data.settings.phone || DEFAULT_PHONE, data.settings.waMsg || DEFAULT_MSG);
-    }
-  }
+  }, {threshold:.12});
 
-  function applyStore(){
-    applyDataToSite(getStore());
-  }
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-  function updateWhatsapp(phone, msg){
-    const encoded = encodeURIComponent(msg || DEFAULT_MSG);
-    qsa('a[href*="wa.me"]').forEach(a=> a.href = `https://wa.me/${phone || DEFAULT_PHONE}?text=${encoded}`);
-  }
-
-  window.sendWA = function(e){
-    e.preventDefault();
-    const data = getStore();
-    const phone = data.settings?.phone || localStorage.getItem('adm_phone') || DEFAULT_PHONE;
-    const nome=document.getElementById('nome')?.value.trim() || '';
-    const whats=document.getElementById('whats')?.value.trim() || '';
-    const servico=document.getElementById('servico')?.value || '';
-    const msg=document.getElementById('msg')?.value.trim() || '';
-    const texto=encodeURIComponent(`Olá! Quero um orçamento.\n\nNome: ${nome}\nWhatsApp: ${whats}\nServiço: ${servico}\nMensagem: ${msg}`);
-    window.open(`https://wa.me/${phone}?text=${texto}`,'_blank');
-  };
-
-  function renderUniversalAdmin(){
-    const controls = document.getElementById('adminControls');
-    if(!controls || document.getElementById('universalAdmin')) return;
-    const data = getStore();
-    const texts = collectTextElements();
-    const links = collectLinks();
-    const fields = collectFields();
-    const html = `
-      <div id="universalAdmin" class="universal-admin">
-        <h3>Editor completo do site</h3>
-        <p>Edite todos os textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos. Depois clique em <b>Aplicar sem salvar</b> para testar ou <b>Salvar tudo</b> para gravar.</p>
-        <div class="ua-actions">
-          <button class="admin-btn gold" id="uaSaveBtn" type="button">Salvar tudo</button>
-          <button class="admin-btn" id="uaApplyBtn" type="button">Aplicar sem salvar</button>
-          <button class="admin-btn" id="uaDownloadBtn" type="button">Baixar HTML final</button>
-        </div>
-        <div id="uaStatus" class="ua-status" aria-live="polite"></div>
-        <details open><summary>Configurações principais</summary>
-          <div class="ua-grid">
-            <label>Título da aba<input id="ua_title" value="${esc(data.settings?.title || document.title)}"></label>
-            <label>WhatsApp<input id="ua_phone" value="${esc(data.settings?.phone || DEFAULT_PHONE)}"></label>
-            <label>Mensagem padrão WhatsApp<input id="ua_msg" value="${esc(data.settings?.waMsg || DEFAULT_MSG)}"></label>
-            <label>Nova senha ADM<input id="ua_pass" type="password" placeholder="Preencha somente se quiser trocar"></label>
-            <label>Cor principal<input id="ua_gold" type="color" value="${esc(data.settings?.gold || '#d6a83d')}"></label>
-            <label>Cor clara<input id="ua_gold2" type="color" value="${esc(data.settings?.gold2 || '#ffd36a')}"></label>
-          </div>
-        </details>
-        <details><summary>Fotos e imagens</summary>
-          <div class="ua-grid">
-            ${imageSlots.map(slot=> slot.kind === 'heroCarousel' ? `<label>${esc(slot.label)}<textarea class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole uma URL por linha ou envie várias fotos abaixo">${esc(data.images?.[slot.key] || '')}</textarea><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*" multiple><small>Para o Hero, envie 2 ou mais fotos. As setas e o arrastar no celular serão ativados automaticamente.</small></label>` : `<label>${esc(slot.label)}<input class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole a URL da imagem" value="${esc(data.images?.[slot.key] || '')}"><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*"></label>`).join('')}
-          </div>
-        </details>
-        <details><summary>Textos, valores, serviços, kits e portfólio</summary>
-          <div class="ua-list">
-            ${texts.map(item=>`<label><span>${esc(item.label)}</span><textarea data-text-key="${item.key}">${esc(data.texts?.[item.key] ?? item.el.innerHTML)}</textarea></label>`).join('')}
-          </div>
-        </details>
-        <details><summary>Links e botões</summary>
-          <div class="ua-list">
-            ${links.map(item=>`<label><span>${esc(item.label)}</span><input data-link-key="${item.key}" value="${esc(data.links?.[item.key] ?? item.el.getAttribute('href'))}"></label>`).join('')}
-          </div>
-        </details>
-        <details><summary>Campos do formulário</summary>
-          <div class="ua-list">
-            ${fields.map(item=>`<label><span>${esc(item.label)}</span><input data-field-key="${item.key}" data-field-part="placeholder" value="${esc(data.fields?.[item.key]?.placeholder ?? item.el.placeholder ?? '')}" placeholder="Placeholder do campo">${item.el.tagName==='SELECT'?`<textarea data-field-key="${item.key}" data-field-part="options" placeholder="Uma opção por linha">${esc(data.fields?.[item.key]?.options ?? qsa('option', item.el).map(o=>o.textContent).join('\n'))}</textarea>`:''}</label>`).join('')}
-          </div>
-        </details>
-      </div>`;
-    controls.insertAdjacentHTML('beforeend', html);
-
-    qsa('.ua-img-file', controls).forEach(input=>{
-      input.addEventListener('change', async function(){
-        const files = Array.from(this.files || []);
-        if(!files.length) return;
-        setStatus('Carregando foto(s)...');
-        try{
-          const urls = await Promise.all(files.map(fileToDataURL));
-          const key = this.dataset.imgKey;
-          const urlInput = controls.querySelector(`.ua-img-url[data-img-key="${key}"]`);
-          if(urlInput){
-            if(key === 'hero'){
-              // No Hero, várias fotos são permitidas. O upload substitui a lista atual,
-              // evitando misturar fotos antigas sem querer. O usuário ainda pode colar URLs linha por linha.
-              urlInput.value = urls.filter(Boolean).join('\n');
-            }else{
-              urlInput.value = urls[0] || '';
-            }
-            urlInput.dispatchEvent(new Event('input', {bubbles:true}));
-          }
-          window.applyUniversalAdminNow?.();
-          setStatus('Foto(s) aplicada(s) na página. Clique em Salvar tudo para gravar.');
-        }catch(err){
-          console.error(err);
-          alert('Não foi possível carregar a foto. Tente uma imagem menor ou em JPG/PNG.');
-          setStatus('Erro ao carregar foto.');
-        }finally{
-          this.value = '';
-        }
-      });
-    });
-    qsa('.ua-img-url', controls).forEach(input=>{
-      input.addEventListener('input', ()=>window.applyUniversalAdminNow?.());
-      input.addEventListener('change', ()=>window.applyUniversalAdminNow?.());
-    });
-
-    document.getElementById('uaSaveBtn')?.addEventListener('click', window.saveUniversalAdmin);
-    document.getElementById('uaApplyBtn')?.addEventListener('click', window.applyUniversalAdminNow);
-    document.getElementById('uaDownloadBtn')?.addEventListener('click', window.downloadFullEditedHTML);
-  }
-
-  function setStatus(msg){
-    const el = document.getElementById('uaStatus');
-    if(!el) return;
-    el.textContent = msg;
-    window.clearTimeout(setStatus._t);
-    setStatus._t = window.setTimeout(()=>{ el.textContent=''; }, 3500);
-  }
-
-  function readUniversalAdminData(){
-    const root = document.getElementById('universalAdmin');
-    if(!root) return null;
-    const data = {settings:{}, texts:{}, links:{}, fields:{}, images:{}};
-    data.settings.title = document.getElementById('ua_title')?.value || document.title;
-    data.settings.phone = (document.getElementById('ua_phone')?.value || DEFAULT_PHONE).replace(/\D/g,'') || DEFAULT_PHONE;
-    data.settings.waMsg = document.getElementById('ua_msg')?.value || DEFAULT_MSG;
-    data.settings.gold = document.getElementById('ua_gold')?.value || '#d6a83d';
-    data.settings.gold2 = document.getElementById('ua_gold2')?.value || '#ffd36a';
-    const newPass = document.getElementById('ua_pass')?.value.trim();
-    if(newPass) localStorage.setItem(PASSKEY, newPass);
-    qsa('[data-text-key]', root).forEach(el=> data.texts[el.dataset.textKey] = el.value);
-    qsa('[data-link-key]', root).forEach(el=> data.links[el.dataset.linkKey] = el.value);
-    qsa('[data-field-key]', root).forEach(el=>{
-      const k=el.dataset.fieldKey, p=el.dataset.fieldPart;
-      data.fields[k] = data.fields[k] || {};
-      data.fields[k][p] = el.value;
-    });
-    qsa('[data-img-key].ua-img-url', root).forEach(el=> data.images[el.dataset.imgKey] = el.value);
-    return data;
-  }
-
-  window.applyUniversalAdminNow = function(){
-    const data = readUniversalAdminData();
-    if(!data) return;
-    applyDataToSite(data);
-    setStatus('Alterações aplicadas na tela. Para manter após atualizar a página, clique em Salvar tudo.');
-  };
-
-  window.saveUniversalAdmin = function(){
-    const data = readUniversalAdminData();
-    if(!data) return;
-    try{
-      setStore(data);
-      applyDataToSite(data);
-      setStatus('Tudo salvo com sucesso neste navegador.');
-      alert('Tudo salvo com sucesso. Para publicar no GitHub, use “Baixar HTML final”.');
-    }catch(err){
-      console.error(err);
-      if(String(err && err.name).includes('Quota') || String(err).includes('quota')){
-        alert('As alterações foram aplicadas, mas as fotos estão muito pesadas para salvar no navegador. Reduzi a qualidade automaticamente; tente enviar menos fotos ou use links de imagem. Depois clique em Baixar HTML final.');
-      }else{
-        alert('Não foi possível salvar. As alterações foram aplicadas na tela, mas não ficaram gravadas no navegador.');
+  // menu mobile
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (max-width:980px){
+      .menu.open{
+        display:flex;position:absolute;top:68px;left:12px;right:12px;flex-direction:column;
+        align-items:stretch;gap:0;background:#061a2b;border:1px solid rgba(255,255,255,.08);
+        padding:10px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.28)
       }
-      applyDataToSite(data);
-      setStatus('Aplicado na tela, mas não salvo no navegador.');
-    }
-  };
-
-  window.downloadFullEditedHTML = function(){
-    const data = readUniversalAdminData();
-    if(data){ setStore(data); applyDataToSite(data); }
-    const clone = document.documentElement.cloneNode(true);
-    clone.querySelectorAll('.admin-panel, .admin-open, .admin-tip').forEach(el=>{}); // mantém ADM no arquivo final
-    const doc = '<!DOCTYPE html>\n' + clone.outerHTML;
-    const blob = new Blob([doc], {type:'text/html;charset=utf-8'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'site-hadan-com-adm-total.html';
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const oldLogin = window.loginAdmin;
-  window.loginAdmin = function(){
-    if(typeof oldLogin === 'function') oldLogin();
-    if(document.getElementById('adminControls')?.style.display !== 'none') renderUniversalAdmin();
-  };
-
-
-
-  // Corrige também os campos antigos do ADM principal para trabalharem junto com o editor completo.
-  document.getElementById('admHeroFile')?.addEventListener('change', async function(){
-    const files = Array.from(this.files || []);
-    if(!files.length) return;
-    const urls = await Promise.all(files.map(fileToDataURL));
-    const current = getStore();
-    current.images = current.images || {};
-    current.images.hero = urls.filter(Boolean).join('\n');
-    setStore(current);
-    applyDataToSite(current);
-    const area = document.querySelector('.ua-img-url[data-img-key="hero"]');
-    if(area) area.value = current.images.hero;
-    const oldUrl = document.getElementById('admHeroUrl');
-    if(oldUrl) oldUrl.value = current.images.hero;
-    setStatus('Hero atualizado pelo upload. Clique em Salvar tudo para manter.');
-    this.value = '';
-  });
-
-  document.addEventListener('DOMContentLoaded', function(){
-    applyStore();
-    renderUniversalAdmin();
-    const style = document.createElement('style');
-    style.textContent = `
-      .universal-admin{margin-top:1.2rem;border-top:1px solid var(--line);padding-top:1.2rem}
-      .universal-admin h3{font-family:Playfair Display,serif;font-size:1.45rem;margin-bottom:.4rem;color:var(--gold2)}
-      .universal-admin details{border:1px solid var(--line);border-radius:18px;padding:1rem;margin:.9rem 0;background:rgba(255,255,255,.025)}
-      .universal-admin summary{cursor:pointer;color:var(--gold2);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem}
-      .ua-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1rem}
-      .ua-list{display:grid;gap:.8rem;margin-top:1rem}
-      .universal-admin label{display:grid;gap:.35rem;color:var(--gold2);font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-      .universal-admin label span{color:var(--muted);font-size:.68rem;text-transform:none;letter-spacing:0;font-weight:700}
-      .universal-admin small{color:var(--muted);font-size:.68rem;text-transform:none;letter-spacing:0;font-weight:600}
-      .universal-admin input,.universal-admin textarea{width:100%;background:#050505;border:1px solid var(--line);border-radius:12px;color:var(--white);padding:.75rem;font-family:Inter;font-size:16px;text-transform:none;letter-spacing:0;font-weight:500}
-      .universal-admin textarea{min-height:84px;resize:vertical}
-      .ua-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:.9rem 0}
-      .ua-status{min-height:1.2rem;color:var(--gold2);font-size:.78rem;font-weight:800;margin:.35rem 0 .7rem}
-      .adm-photo-slot{position:relative;color:#fff;text-shadow:0 3px 12px #000}
-      @media(max-width:760px){.ua-grid{grid-template-columns:1fr}.admin-box{padding:1rem}.universal-admin details{padding:.8rem}}
-    `;
-    document.head.appendChild(style);
-  });
-})();
-
-
+      .menu.open a{padding:13px 14px;border-radius:10px}
+      .menu.open a:hover{background:rgba(255,255,255,.06)}
+    }`;
+  document.head.appendChild(style);
 </script>
 </body>
 </html>
