@@ -60,6 +60,18 @@
     .menu a:hover{color:#fff}
     .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:2px;background:var(--gold);transition:.25s}
     .menu a:hover::after{right:0}
+    .menu .menu-solutions{display:inline-flex;align-items:center;gap:7px}
+    .menu-solutions-icon{
+      width:22px;height:22px;display:inline-grid;place-items:center;border-radius:50%;
+      font-size:11px;line-height:1;color:#fff;
+      background:linear-gradient(135deg,#1598ef 0%,#22b4ff 46%,#ffbd25 54%,#ff8a00 100%);
+      box-shadow:0 0 0 3px rgba(45,171,255,.08),0 0 16px rgba(32,172,255,.32);
+      transition:transform .25s ease,box-shadow .25s ease;
+    }
+    .menu .menu-solutions:hover .menu-solutions-icon{
+      transform:rotate(18deg) scale(1.1);
+      box-shadow:0 0 0 4px rgba(255,180,0,.08),0 0 20px rgba(255,180,0,.38);
+    }
     .nav-cta{
       padding:12px 17px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--orange));
       color:var(--navy);font-weight:900;box-shadow:0 10px 30px rgba(255,180,0,.25)
@@ -501,18 +513,121 @@
       background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);transform:rotate(5deg)
     }
 
-    /* PRICING / PACKAGES */
-    .packages{background:#f6f9fc}
-    .package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .package{
-      padding:30px;border-radius:26px;background:#fff;border:1px solid var(--line);position:relative
+    /* SOLUÇÕES / ECOSSISTEMA HS + HN */
+    .packages{
+      position:relative;
+      background:
+        radial-gradient(circle at 50% 0%,rgba(19,123,226,.08),transparent 34%),
+        #f6f9fc;
+      overflow:hidden
     }
-    .package.featured{border:2px solid var(--blue);box-shadow:0 24px 70px rgba(13,95,184,.14);transform:translateY(-8px)}
-    .badge{position:absolute;top:18px;right:18px;padding:7px 10px;border-radius:999px;background:var(--blue);color:#fff;font-size:10px;font-weight:900}
-    .package h3{font-size:25px;margin:8px 0}
-    .package p{color:var(--muted);line-height:1.5}
-    .package ul{list-style:none;padding:0;margin:22px 0;display:grid;gap:11px}
-    .package li{font-size:14px;display:flex;gap:9px}.package li::before{content:"✓";color:var(--green);font-weight:900}
+    .packages::before{
+      content:"";position:absolute;inset:0;pointer-events:none;opacity:.36;
+      background-image:
+        linear-gradient(rgba(13,95,184,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(13,95,184,.035) 1px,transparent 1px);
+      background-size:42px 42px
+    }
+    .packages .container{position:relative;z-index:1}
+
+    .solutions-niche{
+      position:relative;
+      display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;
+      margin:0 0 50px;padding:22px 28px;border-radius:24px;
+      background:linear-gradient(135deg,#031525 0%,#082d4d 48%,#2f250b 100%);
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow:0 22px 60px rgba(0,25,47,.16);
+      overflow:hidden
+    }
+    .solutions-niche::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 23% 50%,rgba(42,154,255,.24),transparent 24%),
+        radial-gradient(circle at 78% 50%,rgba(255,179,0,.20),transparent 24%);
+      pointer-events:none
+    }
+    .niche-side,.niche-core{position:relative;z-index:2}
+    .niche-side{display:flex;align-items:center;gap:13px}
+    .niche-side.right{justify-content:flex-end;text-align:right}
+    .niche-dot{
+      width:13px;height:13px;border-radius:50%;background:#36a9ff;
+      box-shadow:0 0 0 6px rgba(54,169,255,.12),0 0 22px rgba(54,169,255,.8);flex:0 0 auto
+    }
+    .niche-side.right .niche-dot{
+      background:#ffb400;box-shadow:0 0 0 6px rgba(255,180,0,.12),0 0 22px rgba(255,180,0,.75)
+    }
+    .niche-side strong{display:block;color:#fff;font-size:14px;letter-spacing:.08em}
+    .niche-side small{display:block;color:#9eb8ca;font-size:10px;letter-spacing:.08em;margin-top:3px}
+    .niche-side.right small{color:#d7c18e}
+    .niche-core{
+      display:grid;place-items:center;min-width:220px;padding:11px 22px;border-radius:999px;
+      color:#fff;font-weight:950;font-size:12px;letter-spacing:.13em;text-align:center;
+      background:linear-gradient(90deg,rgba(26,131,223,.28),rgba(255,180,0,.26));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:inset 0 0 22px rgba(255,255,255,.04)
+    }
+    .niche-core span{color:#ffca45}
+
+    .package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+    .package{
+      --pkg:#0d5fb8;
+      display:flex;flex-direction:column;
+      min-height:520px;padding:30px;border-radius:26px;background:#fff;border:1px solid var(--line);position:relative;
+      box-shadow:0 12px 36px rgba(0,27,52,.06);overflow:hidden;transition:.3s
+    }
+    .package::before{
+      content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--pkg)
+    }
+    .package::after{
+      content:"";position:absolute;width:160px;height:160px;border-radius:50%;right:-80px;top:-80px;
+      background:color-mix(in srgb,var(--pkg) 10%,transparent);pointer-events:none
+    }
+    .package:hover{transform:translateY(-7px);box-shadow:0 24px 55px rgba(0,27,52,.12)}
+    .package.hs-package{--pkg:#1679d3}
+    .package.hn-package{--pkg:#f2a900;border-color:rgba(242,169,0,.32);background:linear-gradient(180deg,#fff,#fffdf7)}
+    .package.featured{
+      --pkg:#21a5ff;
+      border:2px solid transparent;
+      background:
+        linear-gradient(#fff,#fff) padding-box,
+        linear-gradient(120deg,#1389e9,#45b9ff 45%,#ffbe24 58%,#ff8a00) border-box;
+      box-shadow:0 26px 76px rgba(13,95,184,.18);
+      transform:translateY(-12px)
+    }
+    .package.featured::before{
+      height:7px;background:linear-gradient(90deg,#1184df 0%,#55c4ff 48%,#ffca44 52%,#ff9000 100%)
+    }
+    .badge{
+      position:absolute;top:18px;right:18px;padding:7px 10px;border-radius:999px;
+      background:linear-gradient(90deg,#0d69c5,#ff9a00);color:#fff;font-size:10px;font-weight:900;z-index:2
+    }
+    .package-brand{
+      display:inline-flex;align-items:center;gap:8px;width:max-content;max-width:100%;
+      padding:7px 10px;border-radius:999px;margin-bottom:10px;
+      font-size:10px;font-weight:950;letter-spacing:.09em;color:var(--pkg);
+      background:color-mix(in srgb,var(--pkg) 9%,white);border:1px solid color-mix(in srgb,var(--pkg) 20%,white)
+    }
+    .package-brand i{width:7px;height:7px;border-radius:50%;background:var(--pkg);box-shadow:0 0 10px var(--pkg)}
+    .fusion-package .package-brand{
+      color:#0c4f8c;background:linear-gradient(90deg,#edf7ff,#fff8e7);border-color:#d9e7ef
+    }
+    .fusion-package .package-brand i{background:linear-gradient(180deg,#168ee7 0 50%,#ffac00 50%);box-shadow:0 0 10px rgba(22,142,231,.5)}
+    .package h3{font-size:27px;margin:7px 0 10px;letter-spacing:-.025em}
+    .package p{color:var(--muted);line-height:1.56;min-height:74px;margin-bottom:0}
+    .package ul{list-style:none;padding:0;margin:22px 0;display:grid;gap:11px;flex:1}
+    .package li{font-size:14px;display:flex;gap:9px;line-height:1.35}
+    .package li::before{content:"✓";color:var(--pkg);font-weight:950}
+    .fusion-package li::before{color:#0b8bca}
+    .package .btn{align-self:flex-start;margin-top:auto}
+    .btn-hs{background:linear-gradient(135deg,#0d69c5,#1596ed);color:#fff}
+    .btn-hn-package{background:linear-gradient(135deg,#ffc136,#ff8a00);color:#102033}
+    .btn-fusion{background:linear-gradient(90deg,#147bd0 0%,#20a9f5 46%,#ffc133 54%,#ff8b00 100%);color:#071827}
+
+    @media(max-width:980px){
+      .solutions-niche{grid-template-columns:1fr;gap:14px;text-align:center}
+      .niche-side,.niche-side.right{justify-content:center;text-align:center}
+      .niche-core{min-width:0;width:100%}
+    }
 
     /* CTA */
     .cta{
@@ -627,6 +742,7 @@
       <a href="#uniao">HS + HN</a>
       <a href="#processo">Processo</a>
       <a href="#portfolio">Portfólio</a>
+      <a href="#solucoes" class="menu-solutions"><span class="menu-solutions-icon">✦</span>Soluções</a>
       <a href="#contato">Contato</a>
     </nav>
     <a class="nav-cta" href="https://wa.me/5513982105058?text=Olá!%20Quero%20um%20orçamento%20para%20meu%20projeto." target="_blank">PEDIR ORÇAMENTO</a>
@@ -897,35 +1013,82 @@
     </div>
   </section>
 
-  <section class="packages">
+  <section class="packages" id="solucoes">
     <div class="container">
       <div class="section-head reveal">
-        <div class="kicker">SOLUÇÕES POR MOMENTO</div>
-        <h2>Comece com a criação certa. Evolua sem perder sua identidade.</h2>
-        <p>Os pacotes abaixo são uma estrutura comercial voltada à criação. Os valores podem ser definidos depois conforme o tamanho de cada projeto.</p>
+        <div class="kicker">SOLUÇÕES POR ESPECIALIDADE</div>
+        <h2>Escolha uma especialidade ou conecte as duas em uma entrega completa.</h2>
+        <p>A HS Start Digital cuida da tecnologia. A HN Marketing cuida da identidade e da criação. No centro, as duas frentes se unem em um projeto completo, pensado do início ao lançamento.</p>
       </div>
+
+      <div class="solutions-niche reveal">
+        <div class="niche-side">
+          <span class="niche-dot"></span>
+          <div>
+            <strong>HS START DIGITAL</strong>
+            <small>TECNOLOGIA • SISTEMAS • SITES</small>
+          </div>
+        </div>
+
+        <div class="niche-core">
+          ECOSSISTEMA <span>&nbsp;HS + HN&nbsp;</span> COMPLETO
+        </div>
+
+        <div class="niche-side right">
+          <div>
+            <strong>HN MARKETING</strong>
+            <small>IDENTIDADE • CRIAÇÃO • COMUNICAÇÃO</small>
+          </div>
+          <span class="niche-dot"></span>
+        </div>
+      </div>
+
       <div class="package-grid">
-        <div class="package reveal">
-          <span class="pill">COMEÇAR</span>
-          <h3>Start Digital</h3>
-          <p>Para quem precisa sair do improviso e ter presença profissional.</p>
-          <ul><li>Site institucional</li><li>Identidade visual básica</li><li>WhatsApp integrado</li><li>Configuração de presença digital</li></ul>
-          <a class="btn btn-ghost" style="border-color:#dce5ec;color:var(--navy)" href="#contato">QUERO COMEÇAR</a>
+        <div class="package hs-package reveal">
+          <div class="package-brand"><i></i> HS START DIGITAL</div>
+          <h3>Tecnologia & Desenvolvimento</h3>
+          <p>Para empresas que precisam transformar uma ideia em uma estrutura digital profissional, funcional e preparada para crescer.</p>
+          <ul>
+            <li>Sites institucionais e landing pages</li>
+            <li>Sistemas web sob medida</li>
+            <li>Lojas virtuais e catálogos digitais</li>
+            <li>Dashboards, PDV e áreas administrativas</li>
+            <li>Automação e integração de processos</li>
+            <li>Estrutura responsiva para computador e celular</li>
+          </ul>
+          <a class="btn btn-hs" href="https://wa.me/5513982105058?text=Olá!%20Vim%20pelo%20site%20e%20quero%20falar%20sobre%20um%20projeto%20com%20a%20HS%20Start%20Digital." target="_blank">FALAR COM A HS →</a>
         </div>
-        <div class="package featured reveal">
-          <span class="badge">MAIS COMPLETO</span>
-          <span class="pill">CRIAR</span>
-          <h3>HS + HN Completo</h3>
-          <p>Desenvolvimento + criação visual trabalhando como uma única identidade.</p>
-          <ul><li>Site ou landing page</li><li>Identidade visual</li><li>Artes para redes sociais</li><li>Flyers e materiais digitais</li><li>Padronização visual da marca</li></ul>
-          <a class="btn btn-primary" href="#contato">QUERO CRIAR</a>
+
+        <div class="package featured fusion-package reveal">
+          <span class="badge">SERVIÇO COMPLETO</span>
+          <div class="package-brand"><i></i> FUSÃO HS + HN</div>
+          <h3>Projeto 360°</h3>
+          <p>Tecnologia e criação trabalhando juntas. Uma única estratégia para construir a estrutura digital e toda a identidade de comunicação do projeto.</p>
+          <ul>
+            <li>Planejamento e conceito do projeto</li>
+            <li>Site, landing page ou sistema personalizado</li>
+            <li>Identidade visual e posicionamento da marca</li>
+            <li>Artes, flyers e materiais de apresentação</li>
+            <li>Padronização visual em todos os canais</li>
+            <li>Integração entre tecnologia e comunicação</li>
+            <li>Entrega completa pronta para apresentação e lançamento</li>
+          </ul>
+          <a class="btn btn-fusion" href="#contato">QUERO O PROJETO COMPLETO →</a>
         </div>
-        <div class="package reveal">
-          <span class="pill">PERSONALIZAR</span>
-          <h3>Projeto Sob Medida</h3>
-          <p>Para empresas que precisam de uma criação personalizada unindo tecnologia, design e materiais digitais.</p>
-          <ul><li>Sistema sob medida</li><li>Site personalizado</li><li>Identidade visual completa</li><li>Materiais gráficos e digitais</li><li>Suporte evolutivo</li></ul>
-          <a class="btn btn-ghost" style="border-color:#dce5ec;color:var(--navy)" href="#contato">FALAR SOBRE PROJETO</a>
+
+        <div class="package hn-package reveal">
+          <div class="package-brand"><i></i> HN MARKETING</div>
+          <h3>Identidade & Criação</h3>
+          <p>Para empresas que precisam transformar sua imagem em uma comunicação forte, coerente, moderna e reconhecível.</p>
+          <ul>
+            <li>Criação e evolução de identidade visual</li>
+            <li>Branding e padronização da marca</li>
+            <li>Artes para redes sociais</li>
+            <li>Flyers, catálogos e materiais digitais</li>
+            <li>Apresentações comerciais e lançamentos</li>
+            <li>Conteúdo visual para produtos e serviços</li>
+          </ul>
+          <a class="btn btn-hn-package" href="https://wa.me/5513991802942?text=Olá!%20Vim%20pelo%20site%20e%20quero%20falar%20sobre%20um%20projeto%20com%20a%20HN%20Marketing." target="_blank">FALAR COM A HN →</a>
         </div>
       </div>
     </div>
